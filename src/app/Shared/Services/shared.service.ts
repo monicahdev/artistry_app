@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
+  errorLog(error: any): void {
+    console.error('[ERROR LOG]', error);
+  }
 
-  constructor() { }
+  async managementToast(
+    context: string,
+    responseOK: boolean,
+    errorResponse: any
+  ): Promise<void> {
+    console.log('[TOAST]', { context, responseOK, errorResponse });
+  }
 }
