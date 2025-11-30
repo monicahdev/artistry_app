@@ -19,3 +19,16 @@ export class AuthDTO {
     this.token_type = token_type;
   }
 }
+
+export interface LoginResponseDTO {
+  access_token: string;
+  token_type: string;
+}
+
+export interface RegisterResponseDTO {
+  id: number;
+  email: string;
+  role: 'USER' | 'ADMIN';
+  created_at: string;
+  updated_at: string;
+}
