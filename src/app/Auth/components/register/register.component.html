@@ -1,1 +1,56 @@
-<p>register works!</p>
+
+  <h2>Crear cuenta</h2>
+
+<form
+  class="register-form"
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  novalidate
+>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      [formControl]="email"
+      placeholder="tu@email.com"
+    />
+
+    <div class="error" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <span *ngIf="email.errors?.['required']">El email es obligatorio.</span>
+      <span *ngIf="email.errors?.['email']">
+        Debes introducir un email válido.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Contraseña</label>
+    <input
+      id="password"
+      type="password"
+      [formControl]="password"
+      placeholder="Tu contraseña"
+    />
+
+    <div
+      class="error"
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+    >
+      <span *ngIf="password.errors?.['required']">
+        La contraseña es obligatoria.
+      </span>
+      <span *ngIf="password.errors?.['minlength']">
+        La contraseña debe tener al menos 8 caracteres.
+      </span>
+      <span *ngIf="password.errors?.['maxlength']">
+        La contraseña no puede superar los 16 caracteres.
+      </span>
+    </div>
+  </div>
+
+  <button type="submit">
+    Registrarse
+  </button>
+</form>
