@@ -7,7 +7,7 @@ import { HomeComponent } from './Public/home/home.component';
 import { PortfolioComponent } from './Public/portfolio/portfolio.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about-me', component: AboutMeComponent },
   { path: 'portfolio', component: PortfolioComponent },
