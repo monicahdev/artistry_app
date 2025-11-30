@@ -1,1 +1,3 @@
-export const appEffects: any[] = [];
+import { AuthEffects } from './Auth/effects/auth.effects';
+
+export const appEffects = [AuthEffects];
