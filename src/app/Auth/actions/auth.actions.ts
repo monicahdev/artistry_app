@@ -1,32 +1,38 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { User } from '../models/auth.model';
+import { AuthDTO, RegisterResponseDTO } from '../models/auth.dto';
 
+// LOGIN
 export const login = createAction(
-  '[Auth] Login',
-  props<{ email: string; password: string }>()
+  '[Login Page] Login',
+  props<{ credentials: AuthDTO }>()
 );
 
 export const loginSuccess = createAction(
-  '[Auth] Login Success',
-  props<{ token: string; user: User }>()
+  '[Login Page] Login Success',
+  props<{ credentials: AuthDTO }>()
 );
 
 export const loginFailure = createAction(
-  '[Auth] Login Failure',
-  props<{ error: string }>()
+  '[Login Page] Login Failure',
+  props<{ payload: HttpErrorResponse }>()
 );
+
+// REGISTER
 export const register = createAction(
-  '[Auth] Register',
-  props<{ email: string; password: string }>()
+  '[Register Page] Register',
+  props<{ credentials: AuthDTO }>()
 );
 
 export const registerSuccess = createAction(
-  '[Auth] Register Success',
-  props<{ email: string }>()
+  '[Register Page] Register Success',
+  props<{ user: RegisterResponseDTO }>()
 );
 
 export const registerFailure = createAction(
-  '[Auth] Register Failure',
-  props<{ error: string }>()
+  '[Register Page] Register Failure',
+  props<{ payload: HttpErrorResponse }>()
 );
-export const logout = createAction('[Auth] Logout');
+
+// LOGOUT
+export const logout = createAction('[Login Page] Logout');
