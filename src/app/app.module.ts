@@ -9,14 +9,20 @@ import { AppComponent } from './app.component';
 import { appEffects } from './app.effects';
 import { appReducers } from './app.reducers';
 import { AuthModule } from './Auth/auth.module';
-
+import { AboutMeComponent } from './Public/about-me/about-me.component';
+import { HomeComponent } from './Public/home/home.component';
+import { PortfolioComponent } from './Public/portfolio/portfolio.component';
 import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
-import { HomeComponent } from './Public/home/home.component';
-import { AboutMeComponent } from './Public/about-me/about-me.component';
-import { PortfolioComponent } from './Public/portfolio/portfolio.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, AboutMeComponent, PortfolioComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    AboutMeComponent,
+    PortfolioComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
