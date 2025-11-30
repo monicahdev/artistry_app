@@ -12,8 +12,11 @@ import { AuthModule } from './Auth/auth.module';
 
 import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
+import { HomeComponent } from './Public/home/home.component';
+import { AboutMeComponent } from './Public/about-me/about-me.component';
+import { PortfolioComponent } from './Public/portfolio/portfolio.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, AboutMeComponent, PortfolioComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
