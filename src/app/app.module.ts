@@ -15,6 +15,7 @@ import { PortfolioComponent } from './Public/portfolio/portfolio.component';
 import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
 import { AuthInterceptor } from './Shared/Services/auth-interceptor.service';
+import { ProfileComponent } from './User/components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { AuthInterceptor } from './Shared/Services/auth-interceptor.service';
     HomeComponent,
     AboutMeComponent,
     PortfolioComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
