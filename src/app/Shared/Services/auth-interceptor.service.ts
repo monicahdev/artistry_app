@@ -13,14 +13,19 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log('[AuthInterceptor] intercept called');
     const token = localStorage.getItem('access_token');
-
+    console.log('[AuthInterceptor] token:', token);
     if (token) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(
+        '[AuthInterceptor] added Authorization header',
+        request.headers.get('Authorization')
+      );
     }
 
     return next.handle(request);
