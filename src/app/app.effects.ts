@@ -1,3 +1,3 @@
 import { AuthEffects } from './Auth/effects/auth.effects';
-
-export const appEffects = [AuthEffects];
+import { UserEffects } from './User/effects/user.effects';
+export const appEffects = [AuthEffects, UserEffects];
