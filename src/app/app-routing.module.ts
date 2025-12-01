@@ -10,10 +10,7 @@ import { ProfileComponent } from './User/components/profile/profile.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-  },
+  { path: 'profile', component: ProfileComponent },
   { path: 'about-me', component: AboutMeComponent },
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'makeup-services', component: HomeComponent },
