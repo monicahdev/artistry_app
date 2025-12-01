@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
+import * as AuthActions from '../../Auth/actions/auth.actions';
 import * as UserActions from '../actions/user.actions';
 import { UserDTO } from '../models/user.dto';
-
 export interface UserState {
   user: UserDTO | null;
   loading: boolean;
@@ -36,7 +36,8 @@ const _userReducer = createReducer(
     loading: false,
     loaded: false,
     error,
-  }))
+  })),
+  on(AuthActions.logout, () => initialState)
 );
 
 export function userReducer(
