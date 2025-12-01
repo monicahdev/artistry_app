@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,6 +14,7 @@ import { HomeComponent } from './Public/home/home.component';
 import { PortfolioComponent } from './Public/portfolio/portfolio.component';
 import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
+import { AuthInterceptor } from './Shared/Services/auth-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,13 @@ import { HeaderComponent } from './Shared/Components/header/header.component';
     EffectsModule.forRoot(appEffects),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
