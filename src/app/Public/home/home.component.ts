@@ -1,10 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from '../../app.reducers';
+import * as UserActions from '../../User/actions/user.actions';
+import { UserDTO } from '../../User/models/user.dto';
+import {
+  selectCurrentUser,
+  selectUserLoading,
+} from '../../User/selectors/user.selectors';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  user$: Observable<UserDTO | null>;
+  loading$: Observable<boolean>;
 
+  constructor(private store: Store<AppState>) {
+    this.user$ = this.store.select(selectCurrentUser);
+    this.loading$ = this.store.select(selectUserLoading);
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(UserActions.loadMe());
+  }
 }
