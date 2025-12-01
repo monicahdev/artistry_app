@@ -17,3 +17,8 @@ export const selectAuthCredentials = createSelector(
   selectAuthState,
   (state) => state.credentials
 );
+
+export const selectIsAuthenticated = createSelector(
+  selectAuthCredentials,
+  (credentials) => !!credentials?.access_token
+);
