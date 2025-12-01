@@ -3,12 +3,13 @@
     <ul>
       <li><a routerLink="/home" routerLinkActive="active">INICIO</a></li>
       <li><a routerLink="/about-me" routerLinkActive="active">SOBRE MÍ</a></li>
-      <li><a routerLink="/profile" routerLinkActive="active">PERFIL</a></li>
+      
       <li><a routerLink="/portfolio" routerLinkActive="active">MI TRABAJO</a></li>
       <li><a routerLink="/makeup-services" routerLinkActive="active">SERVICIOS</a></li>
       <li><a routerLink="/online-classes" routerLinkActive="active">FORMACIÓN EN LÍNEA</a></li>
 
       <ng-container *ngIf="isAuthenticated$ | async; else guestLinks">
+        <li><a routerLink="/profile" routerLinkActive="active">PERFIL</a></li>
         <li class="user-info" *ngIf="(currentUser$ | async) as user">
           Hola, {{ user.email }}
         </li>
