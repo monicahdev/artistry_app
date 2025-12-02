@@ -1,1 +1,38 @@
-<p>services-list works!</p>
+  <h2>Servicios</h2>
+
+<section >
+
+  <div *ngIf="loading$ | async">Cargando servicios...</div>
+
+  <div *ngIf="(makeupServices$ | async) as makeupServices">
+    <div *ngIf="makeupServices.length === 0">
+      No hay servicios disponibles de momento.
+    </div>
+
+    <article
+      *ngFor="let  makeupService of makeupServices"
+      
+    >
+      <div *ngIf="makeupService.photo">
+        <img
+          [src]="makeupService.photo"
+          [alt]="makeupService.service_name"
+        />
+      </div>
+
+      <div >
+        <h2>{{ makeupService.makeup_service_name }}</h2>
+
+        <p >
+          {{ makeupService.description }}
+        </p>
+
+        <p >
+          Desde
+          <strong>{{ makeupService.price_from | currency : 'COP ' }}</strong>
+          · {{ makeupService.duration }} min
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
