@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { appEffects } from './app.effects';
 import { appReducers } from './app.reducers';
 import { AuthModule } from './Auth/auth.module';
+import { MakeupServicesListComponent } from './Makeup_Services/components/makeup_services-list/makeup_services-list.component';
 import { AboutMeComponent } from './Public/about-me/about-me.component';
 import { HomeComponent } from './Public/home/home.component';
 import { PortfolioComponent } from './Public/portfolio/portfolio.component';
@@ -16,7 +17,7 @@ import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
 import { AuthInterceptor } from './Shared/Services/auth-interceptor.service';
 import { ProfileComponent } from './User/components/profile/profile.component';
-import { ServicesListComponent } from './Makeup_Services/components/services-list/services-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { ServicesListComponent } from './Makeup_Services/components/services-lis
     AboutMeComponent,
     PortfolioComponent,
     ProfileComponent,
-    ServicesListComponent,
+    MakeupServicesListComponent,
   ],
   imports: [
     BrowserModule,
