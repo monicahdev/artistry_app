@@ -17,8 +17,8 @@ export class MakeupService {
     return this.http
       .get<any[]>(this.baseUrl)
       .pipe(
-        map((services) =>
-          services.map(
+        map((makeup_services) =>
+          makeup_services.map(
             (s) =>
               new MakeupServiceDTO(
                 s.id,
