@@ -17,8 +17,10 @@ export class MakeupServicesEffects {
       ofType(MakeupServicessActions.loadMakeupServices),
       exhaustMap(() =>
         this.servicesService.getAll().pipe(
-          map((services) =>
-            MakeupServicessActions.loadMakeupServicesSuccess({ services })
+          map((makeup_services) =>
+            MakeupServicessActions.loadMakeupServicesSuccess({
+              makeup_services,
+            })
           ),
           catchError((error) =>
             of(MakeupServicessActions.loadMakeupServicesFailure({ error }))

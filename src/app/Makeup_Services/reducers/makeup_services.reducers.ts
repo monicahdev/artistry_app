@@ -3,14 +3,14 @@ import * as MakeupServicesActions from '../actions/makeup_services.actions';
 import { MakeupServiceDTO } from '../models/makeup_service.dto';
 
 export interface MakeupServicesState {
-  services: MakeupServiceDTO[];
+  makeup_services: MakeupServiceDTO[];
   loading: boolean;
   loaded: boolean;
   error: any;
 }
 
 export const initialState: MakeupServicesState = {
-  services: [],
+  makeup_services: [],
   loading: false,
   loaded: false,
   error: null,
@@ -26,9 +26,9 @@ const _makeupServicesReducer = createReducer(
   })),
   on(
     MakeupServicesActions.loadMakeupServicesSuccess,
-    (state, { services }) => ({
+    (state, { makeup_services }) => ({
       ...state,
-      services,
+      makeup_services,
       loading: false,
       loaded: true,
       error: null,

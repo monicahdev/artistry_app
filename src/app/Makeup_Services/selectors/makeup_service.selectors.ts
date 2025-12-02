@@ -6,7 +6,7 @@ export const selectMakeupServicesState =
 
 export const selectAllMakeupServices = createSelector(
   selectMakeupServicesState,
-  (state) => state.services
+  (state) => state.makeup_services
 );
 
 export const selectMakeupServicesLoading = createSelector(

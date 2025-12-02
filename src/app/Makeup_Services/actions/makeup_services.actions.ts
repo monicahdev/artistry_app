@@ -8,7 +8,7 @@ export const loadMakeupServices = createAction(
 
 export const loadMakeupServicesSuccess = createAction(
   '[MakeupServices] Load MakeupServices Success',
-  props<{ services: MakeupServiceDTO[] }>()
+  props<{ makeup_services: MakeupServiceDTO[] }>()
 );
 
 export const loadMakeupServicesFailure = createAction(
