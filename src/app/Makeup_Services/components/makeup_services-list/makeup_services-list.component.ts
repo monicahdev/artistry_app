@@ -14,11 +14,11 @@ import {
   styleUrls: ['./makeup_services-list.component.scss'],
 })
 export class MakeupServicesListComponent implements OnInit {
-  services$: Observable<MakeupServiceDTO[]>;
+  makeupServices$: Observable<MakeupServiceDTO[]>;
   loading$: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {
-    this.services$ = this.store.select(selectAllMakeupServices);
+    this.makeupServices$ = this.store.select(selectAllMakeupServices);
     this.loading$ = this.store.select(selectMakeupServicesLoading);
   }
 
