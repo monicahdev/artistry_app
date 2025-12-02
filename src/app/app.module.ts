@@ -17,6 +17,8 @@ import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
 import { AuthInterceptor } from './Shared/Services/auth-interceptor.service';
 import { ProfileComponent } from './User/components/profile/profile.component';
+import { ServicesAdminListComponent } from './Admin/components/services-admin-list/services-admin-list.component';
+import { ServicesAdminFormComponent } from './Admin/components/services-admin-form/services-admin-form.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ProfileComponent } from './User/components/profile/profile.component';
     PortfolioComponent,
     ProfileComponent,
     MakeupServicesListComponent,
+    ServicesAdminListComponent,
+    ServicesAdminFormComponent,
   ],
   imports: [
     BrowserModule,
