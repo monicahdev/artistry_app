@@ -1,33 +1,29 @@
-  <h2>Servicios</h2>
+  <h1>Servicios</h1>
 
-<section >
+<section class="makeup_services-list">
 
   <div *ngIf="loading$ | async">Cargando servicios...</div>
-
-  <div *ngIf="(makeupServices$ | async) as makeupServices">
+    <div class="makeup_services-grid" *ngIf="(makeupServices$ | async) as makeupServices">
     <div *ngIf="makeupServices.length === 0">
       No hay servicios disponibles de momento.
     </div>
 
-    <article
-      *ngFor="let  makeupService of makeupServices"
-      
-    >
-      <div *ngIf="makeupService.photo">
+    <article class="makeup_service-card" *ngFor="let  makeupService of makeupServices">
+      <div class="makeup_service-card__image" *ngIf="makeupService.photo">
         <img
           [src]="makeupService.photo"
           [alt]="makeupService.service_name"
         />
       </div>
 
-      <div >
+      <div class="makeup_service-card__content">
         <h2>{{ makeupService.makeup_service_name }}</h2>
 
-        <p >
+        <p class="makeup_service-card__description">
           {{ makeupService.description }}
         </p>
 
-        <p >
+        <p class="makeup_service-card__meta">
           Desde
           <strong>{{ makeupService.price_from | currency : 'COP ' }}</strong>
           · {{ makeupService.duration }} min

@@ -1,0 +1,72 @@
+.makeup_services-list {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  .makeup_services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .makeup_service-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    &__image {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+
+    &__content {
+      padding: 1rem;
+
+      h2 {
+        font-size: 1.2rem;
+        margin: 0 0 0.5rem 0;
+      }
+
+      .makeup_service-card__description {
+        font-size: 0.95rem;
+        line-height: 1.3rem;
+        color: #444;
+        margin-bottom: 1rem;
+        min-height: 50px;
+      }
+
+      .makeup_service-card__meta {
+        font-size: 0.95rem;
+        color: #222;
+        font-weight: 600;
+
+        strong {
+          font-size: 1.05rem;
+        }
+      }
+    }
+  }
+}
