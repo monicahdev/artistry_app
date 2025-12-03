@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { appEffects } from './app.effects';
 import { appReducers } from './app.reducers';
 import { AuthModule } from './Auth/auth.module';
+import { BookingModule } from './Bookings/bookings.module';
 import { MakeupServicesListComponent } from './Makeup_Services/components/makeup_services-list/makeup_services-list.component';
 import { AboutMeComponent } from './Public/about-me/about-me.component';
 import { HomeComponent } from './Public/home/home.component';
@@ -32,6 +33,7 @@ import { ProfileComponent } from './User/components/profile/profile.component';
   ],
   imports: [
     BrowserModule,
+    BookingModule,
     AdminModule,
     AppRoutingModule,
     HttpClientModule,
