@@ -7,6 +7,7 @@
       <li><a routerLink="/portfolio" routerLinkActive="active">MI TRABAJO</a></li>
       <li><a routerLink="/makeup-services" routerLinkActive="active">SERVICIOS</a></li>
       <li><a routerLink="/online-classes" routerLinkActive="active">FORMACIÓN EN LÍNEA</a></li>
+      <li><a routerLink="/bookings/me" routerLinkActive="active">MIS RESERVAS</a></li>
 
       <ng-container *ngIf="(currentUser$ | async) as user; else guestLinks">
         <li class="user-info">
