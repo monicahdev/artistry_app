@@ -3,19 +3,24 @@
     <ul>
       <li><a routerLink="/home" routerLinkActive="active">INICIO</a></li>
       <li><a routerLink="/about-me" routerLinkActive="active">SOBRE MÍ</a></li>
-      
+      <li><a routerLink="/profile" routerLinkActive="active">PERFIL</a></li>
       <li><a routerLink="/portfolio" routerLinkActive="active">MI TRABAJO</a></li>
       <li><a routerLink="/makeup-services" routerLinkActive="active">SERVICIOS</a></li>
       <li><a routerLink="/online-classes" routerLinkActive="active">FORMACIÓN EN LÍNEA</a></li>
 
-      <ng-container *ngIf="isAuthenticated$ | async; else guestLinks">
-        <li><a routerLink="/profile" routerLinkActive="active">PERFIL</a></li>
-        <li class="user-info" *ngIf="(currentUser$ | async) as user">
+      <ng-container *ngIf="(currentUser$ | async) as user; else guestLinks">
+        <li class="user-info">
           Hola, {{ user.email }}
         </li>
+        <li *ngIf="user.role === 'ADMIN'">
+      <a routerLink="/admin/services" routerLinkActive="active">
+        SERVICIOS ADMIN
+      </a>
+    </li>
         <li class="auth-link">
           <button type="button" (click)="logout()">CERRAR SESIÓN</button>
         </li>
+        
       </ng-container>
 
       <ng-template #guestLinks>
@@ -28,9 +33,6 @@
           </a>
         </li>
       </ng-template>
-      <!--<li><a routerLink="/auth/login" routerLinkActive="active">INICIAR SESIÓN</a></li>
-      <li><a routerLink="/auth/register" routerLinkActive="active">REGISTRARSE</a></li>
-    -->
     </ul>
   </nav>
 </header>
