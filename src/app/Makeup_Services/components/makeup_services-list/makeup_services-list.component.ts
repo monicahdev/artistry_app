@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../app.reducers';
@@ -17,12 +18,18 @@ export class MakeupServicesListComponent implements OnInit {
   makeupServices$: Observable<MakeupServiceDTO[]>;
   loading$: Observable<boolean>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private router: Router) {
     this.makeupServices$ = this.store.select(selectAllMakeupServices);
     this.loading$ = this.store.select(selectMakeupServicesLoading);
   }
 
   ngOnInit(): void {
     this.store.dispatch(MakeupServicesActions.loadMakeupServices());
+  }
+
+  onBook(serviceId: number): void {
+    this.router.navigate(['/bookings/new'], {
+      queryParams: { serviceId },
+    });
   }
 }
