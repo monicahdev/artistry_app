@@ -1,6 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
 import { adminReducer, AdminState } from './Admin/reducers';
 import { authReducer, AuthState } from './Auth/reducers/auth.reducers';
+import { bookingsReducer, BookingsState } from './Bookings/reducers';
 import {
   makeupServicesReducer,
   MakeupServicesState,
@@ -12,6 +13,7 @@ export interface AppState {
   admin: AdminState;
   user: UserState;
   makeupServices: MakeupServicesState;
+  bookings: BookingsState;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
@@ -19,4 +21,5 @@ export const appReducers: ActionReducerMap<AppState> = {
   admin: adminReducer,
   user: userReducer,
   makeupServices: makeupServicesReducer,
+  bookings: bookingsReducer,
 };
