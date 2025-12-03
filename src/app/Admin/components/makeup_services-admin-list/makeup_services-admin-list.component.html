@@ -1,1 +1,43 @@
-<p>services-admin-list works!</p>
+<section class="admin-services">
+  <div class="admin-services__header">
+    <h1>Servicios (Admin)</h1>
+
+    <button type="button" (click)="onNewMakeupService()">
+      CREAR NUEVO SERVICIO
+    </button>
+  </div>
+
+  <div *ngIf="loading$ | async">Cargando servicios...</div>
+
+  <table *ngIf="(makeup_services$ | async) as makeup_services">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio desde</th>
+        <th>Descripción</th>
+        <th>Duración (min)</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngIf="makeup_services.length === 0">
+        <td colspan="5">No hay servicios creados todavía.</td>
+      </tr>
+
+      <tr *ngFor="let makeup_service of makeup_services">
+        <td>{{ makeup_service.id }}</td>
+        <td>{{ makeup_service.makeup_service_name }}</td>
+        <td>{{ makeup_service.price_from | currency : 'COP' }}</td>
+        <td>{{ makeup_service.description }}</td>
+        <td>{{ makeup_service.duration }}</td>
+        <td>
+          <button type="button" (click)="onDeleteMakeupService(makeup_service.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
