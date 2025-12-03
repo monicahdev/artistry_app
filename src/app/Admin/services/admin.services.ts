@@ -5,7 +5,8 @@ import { environment } from '../../../environments/environment';
 import { MakeupServiceDTO } from '../../Makeup_Services/models/makeup_service.dto';
 
 export interface MakeupServiceCreateDTO {
-  makeup_service_name: string;
+  //makeup_service
+  service_name: string;
   description: string;
   photo: string;
   price_from: number;
