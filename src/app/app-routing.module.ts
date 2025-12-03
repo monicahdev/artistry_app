@@ -4,6 +4,8 @@ import { MakeupServicesAdminFormComponent } from './Admin/components/makeup_serv
 import { MakeupServicesAdminListComponent } from './Admin/components/makeup_services-admin-list/makeup_services-admin-list.component';
 import { LoginComponent } from './Auth/components/login/login.component';
 import { RegisterComponent } from './Auth/components/register/register.component';
+import { BookingsFormComponent } from './Bookings/components/bookings-form/bookings-form.component';
+import { BookingsListComponent } from './Bookings/components/bookings-list/bookings-list.component';
 import { MakeupServicesListComponent } from './Makeup_Services/components/makeup_services-list/makeup_services-list.component';
 import { AboutMeComponent } from './Public/about-me/about-me.component';
 import { HomeComponent } from './Public/home/home.component';
@@ -28,6 +30,16 @@ const routes: Routes = [
     path: 'admin/services/new',
     component: MakeupServicesAdminFormComponent,
     canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'bookings/me',
+    component: BookingsListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'bookings/new',
+    component: BookingsFormComponent,
+    canActivate: [AuthGuard],
   },
   { path: 'online-classes', component: HomeComponent },
   { path: 'auth/login', component: LoginComponent },
