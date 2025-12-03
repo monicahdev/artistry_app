@@ -1,10 +1,76 @@
 import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from '../../../app.reducers';
+import * as MakeupServicesActions from '../../../Makeup_Services/actions/makeup_services.actions';
+import { MakeupServiceDTO } from '../../../Makeup_Services/models/makeup_service.dto';
+import { selectAllMakeupServices } from '../../../Makeup_Services/selectors/makeup_service.selectors';
+import * as BookingsActions from '../../actions/booking.actions';
+import { BookingCreateDTO } from '../../models/booking.dto';
 
 @Component({
   selector: 'app-bookings-form',
   templateUrl: './bookings-form.component.html',
-  styleUrl: './bookings-form.component.scss'
+  styleUrls: ['./bookings-form.component.scss'],
 })
 export class BookingsFormComponent {
+  bookingForm: FormGroup;
 
+  service_id: FormControl;
+  date_hour: FormControl;
+  comments: FormControl;
+
+  services$: Observable<MakeupServiceDTO[]>;
+
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<AppState>,
+    private route: ActivatedRoute
+  ) {
+    this.service_id = new FormControl<number | null>(null, [
+      Validators.required,
+    ]);
+    this.date_hour = new FormControl('', [Validators.required]);
+    this.comments = new FormControl('');
+
+    this.bookingForm = this.fb.group({
+      service_id: this.service_id,
+      date_hour: this.date_hour,
+      comments: this.comments,
+    });
+
+    this.services$ = this.store.select(selectAllMakeupServices);
+    this.store.dispatch(MakeupServicesActions.loadMakeupServices());
+
+    //seleccionar serviceID existemnte de makeup_services para reservar
+    this.route.queryParamMap.subscribe((params) => {
+      const serviceIdParam = params.get('serviceId');
+      if (serviceIdParam) {
+        const serviceId = +serviceIdParam;
+        this.service_id.setValue(serviceId);
+      }
+    });
+  }
+
+  onSubmit(): void {
+    if (this.bookingForm.invalid) {
+      this.bookingForm.markAllAsTouched();
+      return;
+    }
+
+    const payload: BookingCreateDTO = {
+      service_id: this.service_id.value,
+      date_hour: this.date_hour.value,
+      comments: this.comments.value,
+    };
+
+    this.store.dispatch(BookingsActions.createBooking({ booking: payload }));
+  }
 }
