@@ -4,8 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MakeupServicesAdminFormComponent } from './Admin/components/makeup_services-admin-form/makeup_services-admin-form.component';
-import { MakeupServicesAdminListComponent } from './Admin/components/makeup_services-admin-list/makeup_services-admin-list.component';
+import { AdminModule } from './Admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { appEffects } from './app.effects';
@@ -30,11 +29,10 @@ import { ProfileComponent } from './User/components/profile/profile.component';
     PortfolioComponent,
     ProfileComponent,
     MakeupServicesListComponent,
-    MakeupServicesAdminListComponent,
-    MakeupServicesAdminFormComponent,
   ],
   imports: [
     BrowserModule,
+    AdminModule,
     AppRoutingModule,
     HttpClientModule,
     AuthModule,
