@@ -18,3 +18,8 @@ export const selectMakeupServicesError = createSelector(
   selectMakeupServicesState,
   (state) => state.error
 );
+
+export const selectSelectedMakeupService = createSelector(
+  selectMakeupServicesState,
+  (state) => state.selectedMakeupService
+);
