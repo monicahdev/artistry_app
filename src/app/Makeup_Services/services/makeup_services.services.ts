@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { MakeupServiceDTO } from '../models/makeup_service.dto';
 
@@ -13,7 +12,7 @@ export class MakeupService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<MakeupServiceDTO[]> {
+  /*getAll(): Observable<MakeupServiceDTO[]> {
     return this.http
       .get<any[]>(this.baseUrl)
       .pipe(
@@ -32,5 +31,13 @@ export class MakeupService {
           )
         )
       );
+  }*/
+
+  getAllMakeupServices(): Observable<MakeupServiceDTO[]> {
+    return this.http.get<MakeupServiceDTO[]>(this.baseUrl);
+  }
+
+  getMakeupServiceById(id: number): Observable<MakeupServiceDTO> {
+    return this.http.get<MakeupServiceDTO>(`${this.baseUrl}/${id}`);
   }
 }
