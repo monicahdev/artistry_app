@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { OnlineClassesState } from '../reducers/online_classes.reducers';
 
 export const selectOnlineClassesState =
-  createFeatureSelector<OnlineClassesState>('online_classes');
+  createFeatureSelector<OnlineClassesState>('onlineClasses');
 
 export const selectAllOnlineClasses = createSelector(
   selectOnlineClassesState,
