@@ -15,4 +15,8 @@ export class OnlineClassesService {
   getOnlineClasses(): Observable<OnlineClassDTO[]> {
     return this.http.get<OnlineClassDTO[]>(this.baseUrl);
   }
+
+  getOnlineClassById(id: number): Observable<OnlineClassDTO> {
+    return this.http.get<OnlineClassDTO>(`${this.baseUrl}/${id}`);
+  }
 }
