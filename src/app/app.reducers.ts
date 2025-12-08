@@ -6,6 +6,10 @@ import {
   makeupServicesReducer,
   MakeupServicesState,
 } from './Makeup_Services/reducers/makeup_services.reducers';
+import {
+  onlineClassesReducer,
+  OnlineClassesState,
+} from './Online_Classes/reducers/online_classes.reducers';
 import { userReducer, UserState } from './User/reducers/user.reducer';
 
 export interface AppState {
@@ -14,6 +18,7 @@ export interface AppState {
   user: UserState;
   makeupServices: MakeupServicesState;
   bookings: BookingsState;
+  onlineClasses: OnlineClassesState;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
@@ -22,4 +27,5 @@ export const appReducers: ActionReducerMap<AppState> = {
   user: userReducer,
   makeupServices: makeupServicesReducer,
   bookings: bookingsReducer,
+  onlineClasses: onlineClassesReducer,
 };
