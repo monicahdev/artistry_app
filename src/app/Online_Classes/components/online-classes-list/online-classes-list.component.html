@@ -1,1 +1,26 @@
-<p>online-classes-list works!</p>
+<section>
+  <h1>Formación en línea</h1>
+
+  <div *ngIf="loading$ | async">Cargando clases...</div>
+
+  <article *ngIf="(classes$ | async) as onlineClasses">
+    <p *ngIf="onlineClasses.length === 0">
+      Aún no tienes clases disponibles.
+    </p>
+
+    <li *ngFor="let onlineClass of onlineClasses">
+      <h3>
+        <a [routerLink]="['/online-classes', onlineClass.id]">
+          {{ onlineClass.name }}
+        </a>
+      </h3>
+      <p>{{ onlineClass.description }}</p>
+      <a
+          [routerLink]="['/online-classes', onlineClass.id]"
+        >
+          VER CLASE 
+      
+        </a>
+    </li>
+  </article>
+</section>
