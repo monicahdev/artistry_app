@@ -6,7 +6,10 @@ import { LoginComponent } from './Auth/components/login/login.component';
 import { RegisterComponent } from './Auth/components/register/register.component';
 import { BookingsFormComponent } from './Bookings/components/bookings-form/bookings-form.component';
 import { BookingsListComponent } from './Bookings/components/bookings-list/bookings-list.component';
+import { MakeupServiceComponent } from './Makeup_Services/components/makeup-service/makeup-service.component';
 import { MakeupServicesListComponent } from './Makeup_Services/components/makeup_services-list/makeup_services-list.component';
+import { OnlineClassComponent } from './Online_Classes/components/online-class/online-class.component';
+import { OnlineClassesListComponent } from './Online_Classes/components/online-classes-list/online-classes-list.component';
 import { AboutMeComponent } from './Public/about-me/about-me.component';
 import { HomeComponent } from './Public/home/home.component';
 import { PortfolioComponent } from './Public/portfolio/portfolio.component';
@@ -21,6 +24,10 @@ const routes: Routes = [
   { path: 'about-me', component: AboutMeComponent },
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'makeup-services', component: MakeupServicesListComponent },
+  {
+    path: 'makeup-services/:id',
+    component: MakeupServiceComponent,
+  },
   {
     path: 'admin/services',
     component: MakeupServicesAdminListComponent,
@@ -41,7 +48,16 @@ const routes: Routes = [
     component: BookingsFormComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'online-classes', component: HomeComponent },
+  {
+    path: 'online-classes',
+    component: OnlineClassesListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'online-classes/:id',
+    component: OnlineClassComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },
 ];
