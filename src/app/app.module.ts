@@ -19,6 +19,10 @@ import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
 import { AuthInterceptor } from './Shared/Services/auth-interceptor.service';
 import { ProfileComponent } from './User/components/profile/profile.component';
+import { OnlineClassesListComponent } from './Online_Classes/components/online-classes-list/online-classes-list.component';
+import { OnlineClassesFormComponent } from './Online_Classes/components/online-classes-form/online-classes-form.component';
+import { OnlineClassComponent } from './Online_Classes/components/online-class/online-class.component';
+import { MakeupServiceComponent } from './Makeup_Services/components/makeup-service/makeup-service.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import { ProfileComponent } from './User/components/profile/profile.component';
     PortfolioComponent,
     ProfileComponent,
     MakeupServicesListComponent,
+    OnlineClassesListComponent,
+    OnlineClassesFormComponent,
+    OnlineClassComponent,
+    MakeupServiceComponent,
   ],
   imports: [
     BrowserModule,
