@@ -1,6 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { BookingCreateDTO, BookingDTO } from '../models/booking.dto';
+import {
+  BookingCreateDTO,
+  BookingDTO,
+  BookingUpdateDTO,
+} from '../models/booking.dto';
 
 // load bookings
 export const loadMyBookings = createAction('[Bookings] Load My Bookings');
@@ -44,5 +48,21 @@ export const deleteBookingSuccess = createAction(
 
 export const deleteBookingFailure = createAction(
   '[Bookings] Delete Booking Failure',
+  props<{ error: HttpErrorResponse }>()
+);
+
+// update booking
+export const updateBooking = createAction(
+  '[Bookings] Update Booking',
+  props<{ id: number; update: BookingUpdateDTO }>()
+);
+
+export const updateBookingSuccess = createAction(
+  '[Bookings] Update Booking Success',
+  props<{ booking: BookingDTO }>()
+);
+
+export const updateBookingFailure = createAction(
+  '[Bookings] Update Booking Failure',
   props<{ error: HttpErrorResponse }>()
 );
