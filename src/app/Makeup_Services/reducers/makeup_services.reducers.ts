@@ -54,7 +54,7 @@ const _makeupServicesReducer = createReducer(
     MakeupServicesActions.loadMakeupServiceByIdSuccess,
     (state, { service }) => ({
       ...state,
-      selectedService: service,
+      selectedMakeupService: service,
       loading: false,
       loaded: true,
       error: null,
