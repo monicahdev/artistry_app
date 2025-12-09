@@ -92,4 +92,43 @@ export class BookingsEffects {
       )
     )
   );
+  updateBooking$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BookingsActions.updateBooking),
+      exhaustMap(({ id, update }) =>
+        this.bookingsService.updateBooking(id, update).pipe(
+          map((booking) => BookingsActions.updateBookingSuccess({ booking })),
+          catchError((error: HttpErrorResponse) =>
+            of(BookingsActions.updateBookingFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  updateBookingSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(BookingsActions.updateBookingSuccess),
+        tap(() => {
+          this.notificationService.showSuccess('Reserva actualizada');
+          this.router.navigate(['/bookings/me']);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  updateBookingFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(BookingsActions.updateBookingFailure),
+        tap(({ error }) => {
+          console.error('[Bookings] updateBooking error', error);
+          this.notificationService.showError(
+            'No se pudo actualizar tu reserva.'
+          );
+        })
+      ),
+    { dispatch: false }
+  );
 }
