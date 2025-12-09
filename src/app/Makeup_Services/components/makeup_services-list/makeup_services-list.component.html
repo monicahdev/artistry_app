@@ -17,7 +17,7 @@
       </div>
 
       <div class="makeup_service-card__content">
-        <h2>{{ makeupService.makeup_service_name }}</h2>
+        <a [routerLink]="['/makeup-services', makeupService.id]"><h2>{{ makeupService.service_name }}</h2></a>
 
         <p class="makeup_service-card__description">
           {{ makeupService.description }}
