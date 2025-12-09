@@ -17,3 +17,11 @@ export class BookingCreateDTO {
     public comments?: string
   ) {}
 }
+
+export class BookingUpdateDTO {
+  constructor(
+    public date_hour?: string,
+    public comments?: string | null,
+    public status?: string
+  ) {}
+}
