@@ -78,6 +78,26 @@ const _bookingsReducer = createReducer(
     ...state,
     loading: false,
     error,
+  })),
+
+  // update booking
+  on(BookingsActions.updateBooking, (state) => ({
+    ...state,
+    loading: true,
+  })),
+
+  on(BookingsActions.updateBookingSuccess, (state, { booking }) => ({
+    ...state,
+    bookings: state.bookings.map((b) => (b.id === booking.id ? booking : b)),
+    loading: false,
+    loaded: true,
+    error: null,
+  })),
+
+  on(BookingsActions.updateBookingFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
   }))
 );
 
