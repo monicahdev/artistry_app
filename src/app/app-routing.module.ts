@@ -38,7 +38,7 @@ const routes: Routes = [
     component: MakeupServicesAdminFormComponent,
     canActivate: [AuthGuard, AdminGuard],
   },
-  {
+  /*{
     path: 'bookings/me',
     component: BookingsListComponent,
     canActivate: [AuthGuard],
@@ -47,6 +47,14 @@ const routes: Routes = [
     path: 'bookings/new',
     component: BookingsFormComponent,
     canActivate: [AuthGuard],
+  },*/
+  {
+    path: 'bookings',
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'me', component: BookingsListComponent },
+      { path: 'form', component: BookingsFormComponent },
+    ],
   },
   {
     path: 'online-classes',

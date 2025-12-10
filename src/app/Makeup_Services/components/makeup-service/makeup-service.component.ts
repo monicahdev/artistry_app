@@ -36,7 +36,7 @@ export class MakeupServiceComponent {
   }
 
   onBook(serviceId: number): void {
-    this.router.navigate(['/bookings/new'], {
+    this.router.navigate(['/bookings/form'], {
       queryParams: { serviceId },
     });
   }
