@@ -26,9 +26,20 @@
         <td>{{ booking.status }}</td>
         <td>{{ booking.comments }}</td>
         <td>
-          <button type="button" (click)="onDeleteBooking(booking.id)">
-            ELIMINAR RESERVA
-          </button>
+          <button
+            [routerLink]="['/bookings/form']"
+            [queryParams]="{
+              bookingId: booking.id,
+              service_id: booking.service_id,
+              date_hour: booking.date_hour,
+              comments: booking.comments
+            }"
+          >
+          EDITAR RESERVA
+        </button>
+        <button type="button" (click)="onDeleteBooking(booking.id)">
+          ELIMINAR RESERVA
+        </button>
         </td>
       </tr>
     </tbody>
