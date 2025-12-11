@@ -4,11 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MakeupServicesAdminFormComponent } from './components/makeup_services-admin-form/makeup_services-admin-form.component';
 import { MakeupServicesAdminListComponent } from './components/makeup_services-admin-list/makeup_services-admin-list.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
 @NgModule({
   declarations: [
     MakeupServicesAdminListComponent,
     MakeupServicesAdminFormComponent,
+    UsersListComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
 })
