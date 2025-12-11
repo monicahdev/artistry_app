@@ -39,4 +39,17 @@ export class MakeupServicesAdminListComponent implements OnInit {
 
     this.store.dispatch(AdminActions.deleteAdminMakeupService({ id }));
   }
+
+  onEditMakeupService(service: MakeupServiceDTO): void {
+    this.router.navigate(['/admin/services/new'], {
+      queryParams: {
+        id: service.id,
+        makeup_service_name: service.service_name,
+        description: service.description,
+        photo: service.photo,
+        price_from: service.price_from,
+        duration: service.duration,
+      },
+    });
+  }
 }
