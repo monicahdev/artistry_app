@@ -17,7 +17,13 @@
       <a routerLink="/admin/services" routerLinkActive="active">
         SERVICIOS ADMIN
       </a>
-    </li>
+     </li>
+     <li>  <a
+    *ngIf="(currentUser$ | async)?.role === 'ADMIN'"
+    routerLink="/admin/users"
+  >
+    LISTA USUARIOS
+  </a></li>
         <li class="auth-link">
           <button type="button" (click)="logout()">CERRAR SESIÓN</button>
         </li>
