@@ -1,0 +1,9 @@
+<h1>Usuarios</h1>
+
+<div *ngIf="loading$ | async">Cargando usuarios...</div>
+
+<ul *ngIf="(users$ | async) as users">
+  <li *ngFor="let user of users">
+    <strong>{{ user.email }}</strong> — {{ user.role }}
+  </li>
+</ul>
