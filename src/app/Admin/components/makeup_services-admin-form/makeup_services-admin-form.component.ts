@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducers';
 import * as AdminActions from '../../actions/admin.actions';
@@ -16,7 +16,7 @@ import { MakeupServiceCreateDTO } from '../../services/admin.services';
   templateUrl: './makeup_services-admin-form.component.html',
   styleUrls: ['./makeup_services-admin-form.component.scss'],
 })
-export class MakeupServicesAdminFormComponent {
+export class MakeupServicesAdminFormComponent implements OnInit {
   makeup_serviceForm: FormGroup;
   makeup_service_name: FormControl;
   description: FormControl;
@@ -24,10 +24,14 @@ export class MakeupServicesAdminFormComponent {
   price_from: FormControl;
   duration: FormControl;
 
+  isEditMode = false;
+  serviceId: number | null = null;
+
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.makeup_service_name = new FormControl('', [Validators.required]);
     this.description = new FormControl('', [Validators.required]);
@@ -49,6 +53,28 @@ export class MakeupServicesAdminFormComponent {
       duration: this.duration,
     });
   }
+  ngOnInit(): void {
+    this.route.queryParamMap.subscribe((params) => {
+      const idParam = params.get('id');
+
+      if (idParam) {
+        this.serviceId = +idParam;
+        this.isEditMode = true;
+
+        const nameParam = params.get('makeup_service_name');
+        const descriptionParam = params.get('description');
+        const photoParam = params.get('photo');
+        const priceFromParam = params.get('price_from');
+        const durationParam = params.get('duration');
+
+        if (nameParam) this.makeup_service_name.setValue(nameParam);
+        if (descriptionParam) this.description.setValue(descriptionParam);
+        if (photoParam) this.photo.setValue(photoParam);
+        if (priceFromParam) this.price_from.setValue(+priceFromParam);
+        if (durationParam) this.duration.setValue(+durationParam);
+      }
+    });
+  }
 
   onSubmit(): void {
     if (this.makeup_serviceForm.invalid) {
@@ -64,10 +90,19 @@ export class MakeupServicesAdminFormComponent {
       price_from: this.price_from.value,
       duration: this.duration.value,
     };
-
-    //crea nuevo servicio
-    this.store.dispatch(AdminActions.createAdminMakeupService({ payload }));
-    //lo muestra en la lista de admin/services
-    this.router.navigate(['/admin/services']);
+    //actualizar servicio existentes
+    if (this.isEditMode && this.serviceId !== null) {
+      this.store.dispatch(
+        AdminActions.updateAdminMakeupService({
+          id: this.serviceId,
+          payload,
+        })
+      );
+    } else {
+      //crea nuevo servicio
+      this.store.dispatch(AdminActions.createAdminMakeupService({ payload }));
+      //lo muestra en la lista de admin/services
+      this.router.navigate(['/admin/services']);
+    }
   }
 }
