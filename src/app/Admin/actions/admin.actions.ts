@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { MakeupServiceDTO } from '../../Makeup_Services/models/makeup_service.dto';
+import { UserDTO } from '../../User/models/user.dto';
 import { MakeupServiceCreateDTO } from '../services/admin.services';
 
 export const loadAdminMakeupServices = createAction(
@@ -47,4 +48,17 @@ export const deleteAdminMakeupServiceSuccess = createAction(
 export const deleteAdminMakeupServiceFailure = createAction(
   '[Admin] Delete Makeup Service Failure',
   props<{ error: HttpErrorResponse }>()
+);
+
+//Listar usuarios
+export const loadAllUsers = createAction('[Admin] Load All Users');
+
+export const loadAllUsersSuccess = createAction(
+  '[Admin] Load All Users Success',
+  props<{ users: UserDTO[] }>()
+);
+
+export const loadAllUsersFailure = createAction(
+  '[Admin] Load All Users Failure',
+  props<{ error: any }>()
 );
