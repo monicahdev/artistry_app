@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as BookingsActions from '../../actions/booking.actions';
@@ -17,7 +18,7 @@ export class BookingsListComponent implements OnInit {
   bookings$: Observable<BookingDTO[]>;
   loading$: Observable<boolean>;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.bookings$ = this.store.select(selectAllBookings);
     this.loading$ = this.store.select(selectBookingsLoading);
   }
@@ -31,5 +32,16 @@ export class BookingsListComponent implements OnInit {
     if (!confirmed) return;
 
     this.store.dispatch(BookingsActions.deleteBooking({ id }));
+  }
+
+  onEditBooking(booking: BookingDTO): void {
+    this.router.navigate(['/bookings/form'], {
+      queryParams: {
+        bookingId: booking.id,
+        service_id: booking.service_id,
+        date_hour: booking.date_hour,
+        comments: booking.comments ?? '',
+      },
+    });
   }
 }
