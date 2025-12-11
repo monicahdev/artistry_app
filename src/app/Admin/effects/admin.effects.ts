@@ -60,4 +60,16 @@ export class AdminEffects {
       )
     )
   );
+
+  loadAllUsers$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AdminActions.loadAllUsers),
+      exhaustMap(() =>
+        this.adminService.getAllUsers().pipe(
+          map((users) => AdminActions.loadAllUsersSuccess({ users })),
+          catchError((error) => of(AdminActions.loadAllUsersFailure({ error })))
+        )
+      )
+    )
+  );
 }
