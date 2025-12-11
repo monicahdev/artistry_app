@@ -13,6 +13,13 @@ export interface MakeupServiceCreateDTO {
   duration: number;
 }
 
+export interface MakeupServiceUpdateDTO {
+  service_name?: string;
+  description?: string;
+  photo?: string;
+  price_from?: number;
+  duration?: number;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -33,6 +40,13 @@ export class AdminService {
 
   deleteMakeupService(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  updateMakeupService(
+    id: number,
+    payload: MakeupServiceCreateDTO
+  ): Observable<MakeupServiceDTO> {
+    return this.http.patch<MakeupServiceDTO>(`${this.baseUrl}/${id}`, payload);
   }
 
   getAllUsers(): Observable<UserDTO[]> {
