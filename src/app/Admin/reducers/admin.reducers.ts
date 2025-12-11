@@ -91,6 +91,31 @@ const _adminReducer = createReducer(
     error,
   })),
 
+  // modificar servicio de maquillaje
+  on(AdminActions.updateAdminMakeupService, (state) => ({
+    ...state,
+    loading: true,
+  })),
+
+  on(
+    AdminActions.updateAdminMakeupServiceSuccess,
+    (state, { makeup_service }) => ({
+      ...state,
+      makeup_services: state.makeup_services.map((s) =>
+        s.id === makeup_service.id ? makeup_service : s
+      ),
+      loading: false,
+      loaded: true,
+      error: null,
+    })
+  ),
+
+  on(AdminActions.updateAdminMakeupServiceFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
+
   //lista de usuarios
   on(AdminActions.loadAllUsers, (state) => ({
     ...state,
