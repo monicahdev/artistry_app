@@ -1,5 +1,5 @@
 <section class="admin-service-form">
-  <h1>Nuevo servicio</h1>
+  <h1>{{ isEditMode ? 'Editar servicio' : 'Nuevo servicio' }}</h1>
 
   <form [formGroup]="makeup_serviceForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -78,7 +78,7 @@
     </div>
 
     <button type="submit">
-      Guardar servicio
+      {{ isEditMode ? 'Guardar cambios' : 'Guardar servicio' }}
     </button>
   </form>
 </section>
