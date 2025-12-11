@@ -27,13 +27,8 @@
         <td>{{ booking.comments }}</td>
         <td>
           <button
-            [routerLink]="['/bookings/form']"
-            [queryParams]="{
-              bookingId: booking.id,
-              service_id: booking.service_id,
-              date_hour: booking.date_hour,
-              comments: booking.comments
-            }"
+            
+            (click)="onEditBooking(booking)"
           >
           EDITAR RESERVA
         </button>
