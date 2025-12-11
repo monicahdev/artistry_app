@@ -16,3 +16,18 @@ export const selectAdminError = createSelector(
   selectAdminState,
   (state) => state.error
 );
+
+export const selectAllUsers = createSelector(
+  selectAdminState,
+  (state) => state.users
+);
+
+export const selectAdminUsersLoading = createSelector(
+  selectAdminState,
+  (state) => state.loadingUsers
+);
+
+export const selectAdminUsersError = createSelector(
+  selectAdminState,
+  (state) => state.usersError
+);
