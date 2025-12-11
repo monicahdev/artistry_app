@@ -50,6 +50,22 @@ export const deleteAdminMakeupServiceFailure = createAction(
   props<{ error: HttpErrorResponse }>()
 );
 
+//actualizar un servicio de maquillaje
+export const updateAdminMakeupService = createAction(
+  '[Admin] Update Makeup Service',
+  props<{ id: number; payload: MakeupServiceCreateDTO }>()
+);
+
+export const updateAdminMakeupServiceSuccess = createAction(
+  '[Admin] Update Makeup Service Success',
+  props<{ makeup_service: MakeupServiceDTO }>()
+);
+
+export const updateAdminMakeupServiceFailure = createAction(
+  '[Admin] Update Makeup Service Failure',
+  props<{ error: HttpErrorResponse }>()
+);
+
 //Listar usuarios
 export const loadAllUsers = createAction('[Admin] Load All Users');
 
