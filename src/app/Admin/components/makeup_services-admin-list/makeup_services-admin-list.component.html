@@ -28,11 +28,14 @@
 
       <tr *ngFor="let makeup_service of makeup_services">
         <td>{{ makeup_service.id }}</td>
-        <td>{{ makeup_service.makeup_service_name }}</td>
-        <td>{{ makeup_service.price_from | currency : 'COP' }}</td>
+        <td>{{ makeup_service.service_name }}</td>
+        <td>{{ makeup_service.price_from | currency : 'COP ' }}</td>
         <td>{{ makeup_service.description }}</td>
         <td>{{ makeup_service.duration }}</td>
         <td>
+          <button type="button" (click)="onEditMakeupService(makeup_service)">
+    Editar
+  </button>
           <button type="button" (click)="onDeleteMakeupService(makeup_service.id)">
             Eliminar
           </button>
