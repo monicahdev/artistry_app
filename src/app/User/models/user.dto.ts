@@ -16,7 +16,7 @@ export class UserDTO {
     this.email = email;
     this.role = role;
     this.created_at = created_at ? new Date(created_at) : undefined;
-    this.updated_at = updated_at ? new Date(created_at) : undefined;
+    this.updated_at = updated_at ? new Date(updated_at) : undefined;
   }
 }
 
