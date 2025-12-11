@@ -5,12 +5,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MakeupServicesAdminFormComponent } from './components/makeup_services-admin-form/makeup_services-admin-form.component';
 import { MakeupServicesAdminListComponent } from './components/makeup_services-admin-list/makeup_services-admin-list.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { OnlineClassesAdminListComponent } from './components/online-classes-admin-list/online-classes-admin-list.component';
+import { OnlineClassesAdminFormComponent } from './components/online-classes-admin-form/online-classes-admin-form.component';
 
 @NgModule({
   declarations: [
     MakeupServicesAdminListComponent,
     MakeupServicesAdminFormComponent,
     UsersListComponent,
+    OnlineClassesAdminListComponent,
+    OnlineClassesAdminFormComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
 })
