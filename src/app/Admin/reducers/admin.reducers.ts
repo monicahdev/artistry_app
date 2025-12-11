@@ -1,8 +1,14 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { MakeupServiceDTO } from '../../Makeup_Services/models/makeup_service.dto';
+import { UserDTO } from '../../User/models/user.dto';
 import * as AdminActions from '../actions/admin.actions';
 
 export interface AdminState {
+  users: UserDTO[];
+  loadingUsers: boolean;
+  usersLoaded: boolean;
+  usersError: any;
+
   makeup_services: MakeupServiceDTO[];
   loading: boolean;
   loaded: boolean;
@@ -10,6 +16,11 @@ export interface AdminState {
 }
 
 export const initialState: AdminState = {
+  users: [],
+  loadingUsers: false,
+  usersLoaded: false,
+  usersError: null,
+
   makeup_services: [],
   loading: false,
   loaded: false,
@@ -78,6 +89,27 @@ const _adminReducer = createReducer(
     ...state,
     loading: false,
     error,
+  })),
+
+  //lista de usuarios
+  on(AdminActions.loadAllUsers, (state) => ({
+    ...state,
+    loadingUsers: true,
+    usersError: null,
+  })),
+
+  on(AdminActions.loadAllUsersSuccess, (state, { users }) => ({
+    ...state,
+    users,
+    loadingUsers: false,
+    usersLoaded: true,
+    usersError: null,
+  })),
+
+  on(AdminActions.loadAllUsersFailure, (state, { error }) => ({
+    ...state,
+    loadingUsers: false,
+    usersError: error,
   }))
 );
 export function adminReducer(
