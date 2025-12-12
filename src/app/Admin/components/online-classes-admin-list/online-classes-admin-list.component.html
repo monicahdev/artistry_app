@@ -1,1 +1,54 @@
 <p>online-classes-admin-list works!</p>
+<section class="admin-classes">
+  <div class="admin-classes__header">
+    <h1>Clases online (Admin)</h1>
+    <button type="button" (click)="onNewClass()">CREAR CLASE</button>
+  </div>
+
+  <div *ngIf="loading$ | async">Cargando clases...</div>
+
+  <table *ngIf="(classes$ | async) as classes">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>URL</th>
+        <th>Acciones</th>
+        <th>Grant access</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="classes.length === 0">
+        <td colspan="6">No hay clases creadas todavía.</td>
+      </tr>
+
+      <tr *ngFor="let cls of classes">
+        <td>{{ cls.id }}</td>
+        <td>{{ cls.name }}</td>
+        <td>{{ cls.description }}</td>
+        <td>{{ cls.url }}</td>
+        <td>
+          <button type="button" (click)="onEditClass(cls)">EDITAR</button>
+          <button type="button" (click)="onDeleteClass(cls.id)">
+            ELIMINAR
+          </button>
+        </td>
+        <td>
+          <input
+            #userIdInput
+            type="number"
+            placeholder="User ID"
+            style="width: 80px"
+          />
+          <button
+            type="button"
+            (click)="onGrantAccess(cls.id, userIdInput)"
+          >
+            DAR ACCESO
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
