@@ -31,3 +31,22 @@ export const selectAdminUsersError = createSelector(
   selectAdminState,
   (state) => state.usersError
 );
+
+export const selectAdminOnlineClasses = createSelector(
+  selectAdminState,
+  (state) => state.online_classes
+);
+
+export const selectAdminOnlineClassesLoading = createSelector(
+  selectAdminState,
+  (state) => state.loadingClasses
+);
+
+export const selectAdminOnlineClassesError = createSelector(
+  selectAdminState,
+  (state) => state.classesError
+);
+export const selectGrantingAccess = createSelector(
+  selectAdminState,
+  (state) => state.grantingAccess
+);
