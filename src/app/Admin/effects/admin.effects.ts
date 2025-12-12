@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -121,5 +122,136 @@ export class AdminEffects {
         )
       )
     )
+  );
+
+  loadAdminOnlineClasses$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AdminActions.loadAdminOnlineClasses),
+      exhaustMap(() =>
+        this.adminService.getAllOnlineClasses().pipe(
+          map((classes) =>
+            AdminActions.loadAdminOnlineClassesSuccess({ classes })
+          ),
+          catchError((error: HttpErrorResponse) =>
+            of(AdminActions.loadAdminOnlineClassesFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  //crear clase
+  createAdminOnlineClass$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AdminActions.createAdminOnlineClass),
+      exhaustMap(({ payload }) =>
+        this.adminService.createOnlineClass(payload).pipe(
+          map((online_class) =>
+            AdminActions.createAdminOnlineClassSuccess({ online_class })
+          ),
+          catchError((error: HttpErrorResponse) =>
+            of(AdminActions.createAdminOnlineClassFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  createAdminOnlineClassSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.createAdminOnlineClassSuccess),
+        tap(() => {
+          this.notificationService.showSuccess('Clase creada correctamente');
+          this.router.navigate(['/admin/classes']);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  //actualizar clase
+  updateAdminOnlineClass$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AdminActions.updateAdminOnlineClass),
+      exhaustMap(({ id, payload }) =>
+        this.adminService.updateOnlineClass(id, payload).pipe(
+          map((online_class) =>
+            AdminActions.updateAdminOnlineClassSuccess({ online_class })
+          ),
+          catchError((error: HttpErrorResponse) =>
+            of(AdminActions.updateAdminOnlineClassFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  updateAdminOnlineClassSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.updateAdminOnlineClassSuccess),
+        tap(() => {
+          this.notificationService.showSuccess('Clase actualizada');
+          this.router.navigate(['/admin/classes']);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  //eliminar clase
+  deleteAdminOnlineClass$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AdminActions.deleteAdminOnlineClass),
+      exhaustMap(({ id }) =>
+        this.adminService.deleteOnlineClass(id).pipe(
+          map(() => AdminActions.deleteAdminOnlineClassSuccess({ id })),
+          catchError((error: HttpErrorResponse) =>
+            of(AdminActions.deleteAdminOnlineClassFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  //dar acceso a clase a un usuario
+  grantOnlineClassAccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AdminActions.grantOnlineClassAccess),
+      exhaustMap(({ classId, userId }) =>
+        this.adminService.grantOnlineClassAccess(classId, userId).pipe(
+          map(() => AdminActions.grantOnlineClassAccessSuccess()),
+          catchError((error: HttpErrorResponse) =>
+            of(AdminActions.grantOnlineClassAccessFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  grantOnlineClassAccessSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.grantOnlineClassAccessSuccess),
+        tap(() => {
+          this.notificationService.showSuccess(
+            'Acceso a la clase concedido correctamente'
+          );
+        })
+      ),
+    { dispatch: false }
+  );
+
+  grantOnlineClassAccessFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.grantOnlineClassAccessFailure),
+        tap(({ error }) => {
+          console.error('[Admin] grantOnlineClassAccess error', error);
+          this.notificationService.showError(
+            'No se pudo conceder acceso a la clase.'
+          );
+        })
+      ),
+    { dispatch: false }
   );
 }
