@@ -1,1 +1,49 @@
 <p>online-classes-admin-form works!</p>
+<section class="admin-class-form">
+  <h1>{{ isEditMode ? 'Editar clase' : 'Crear clase' }}</h1>
+
+  <form [formGroup]="classForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nombre de la clase</label>
+      <input
+        id="name"
+        type="text"
+        [formControl]="name"
+      />
+      <div class="error" *ngIf="name.invalid && (name.dirty || name.touched)">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <textarea
+        id="description"
+        rows="4"
+        [formControl]="description"
+        placeholder="Describe el contenido de la clase..."
+      ></textarea>
+      <div
+        class="error"
+        *ngIf="
+          description.invalid && (description.dirty || description.touched)
+        "
+      >
+        La descripción es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="url">URL</label>
+      <input id="url" type="text" [formControl]="url" />
+      <div class="error" *ngIf="url.invalid && (url.dirty || url.touched)">
+        La URL es obligatoria.
+      </div>
+    </div>
+
+    <button type="submit">
+      {{ isEditMode ? 'Actualizar clase' : 'Crear clase' }}
+    </button>
+    <button type="button" (click)="onCancel()">Cancelar</button>
+  </form>
+</section>
