@@ -7,3 +7,14 @@ export class OnlineClassDTO {
     public created_at: string
   ) {}
 }
+export interface OnlineClassCreateDTO {
+  name: string;
+  description: string;
+  url: string;
+}
+
+export interface OnlineClassUpdateDTO {
+  name?: string;
+  description?: string;
+  url?: string;
+}
