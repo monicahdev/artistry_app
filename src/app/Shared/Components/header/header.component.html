@@ -24,6 +24,11 @@
   >
     LISTA USUARIOS
   </a></li>
+  <li *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
+  <a routerLink="/admin/classes" routerLinkActive="active">
+    CLASES ADMIN
+  </a>
+</li>
         <li class="auth-link">
           <button type="button" (click)="logout()">CERRAR SESIÓN</button>
         </li>
