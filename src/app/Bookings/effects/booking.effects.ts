@@ -92,6 +92,32 @@ export class BookingsEffects {
       )
     )
   );
+
+  deleteBookingSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(BookingsActions.deleteBookingSuccess),
+        tap(() => {
+          this.notificationService.showSuccess(
+            'Reserva eliminada correctamente'
+          );
+        })
+      ),
+    { dispatch: false }
+  );
+
+  deleteBookingFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(BookingsActions.deleteBookingFailure),
+        tap(({ error }) => {
+          console.error('[Bookings] deleteBooking error', error);
+          this.notificationService.showError('No se pudo eliminar la reserva.');
+        })
+      ),
+    { dispatch: false }
+  );
+
   updateBooking$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BookingsActions.updateBooking),
