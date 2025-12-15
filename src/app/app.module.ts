@@ -24,6 +24,7 @@ import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
 import { AuthInterceptor } from './Shared/Services/auth-interceptor.service';
 import { ProfileComponent } from './User/components/profile/profile.component';
+import { ToastComponent } from './Shared/Components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ProfileComponent } from './User/components/profile/profile.component';
     OnlineClassesFormComponent,
     OnlineClassComponent,
     MakeupServiceComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
