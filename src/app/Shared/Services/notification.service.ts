@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
+export interface Notification {
+  type: 'SUCCESS' | 'ERROR' | 'INFO';
+  message: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationService {
-  showInfo(message: string): void {
-    console.info('[INFO]', message);
+  private notificationSubject = new Subject<Notification>();
+  notifications$ = this.notificationSubject.asObservable();
+
+  showSuccess(message: string) {
+    this.notificationSubject.next({ type: 'SUCCESS', message });
   }
 
-  showSuccess(message: string): void {
-    console.log('[SUCCESS]', message);
+  showError(message: string) {
+    this.notificationSubject.next({ type: 'ERROR', message });
   }
 
-  showError(message: string): void {
-    console.error('[ERROR]', message);
+  showInfo(message: string) {
+    this.notificationSubject.next({ type: 'INFO', message });
   }
 }
