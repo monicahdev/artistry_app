@@ -51,6 +51,30 @@ export class AdminEffects {
     )
   );
 
+  createMakeupServiceSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.createAdminMakeupServiceSuccess),
+        tap(() => {
+          this.notificationService.showSuccess('Servicio creado correctamente');
+          this.router.navigate(['/admin/services']);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  createMakeupServiceFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.createAdminMakeupServiceFailure),
+        tap(({ error }) => {
+          console.error('[Admin] createMakeupService error', error);
+          this.notificationService.showError('No se pudo crear el servicio.');
+        })
+      ),
+    { dispatch: false }
+  );
+
   deleteMakeupService$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AdminActions.deleteAdminMakeupService),
@@ -68,6 +92,34 @@ export class AdminEffects {
       )
     )
   );
+
+  deleteMakeupServiceSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.deleteAdminMakeupServiceSuccess),
+        tap(() => {
+          this.notificationService.showSuccess(
+            'Servicio eliminado correctamente'
+          );
+        })
+      ),
+    { dispatch: false }
+  );
+
+  deleteMakeupServiceFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.deleteAdminMakeupServiceFailure),
+        tap(({ error }) => {
+          console.error('[Admin] deleteMakeupService error', error);
+          this.notificationService.showError(
+            'No se pudo eliminar el servicio.'
+          );
+        })
+      ),
+    { dispatch: false }
+  );
+
   updateMakeupService$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AdminActions.updateAdminMakeupService),
@@ -169,6 +221,18 @@ export class AdminEffects {
     { dispatch: false }
   );
 
+  createAdminOnlineClassFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.createAdminOnlineClassFailure),
+        tap(({ error }) => {
+          console.error('[Admin] createAdminOnlineClass error', error);
+          this.notificationService.showError('No se pudo crear la clase.');
+        })
+      ),
+    { dispatch: false }
+  );
+
   //actualizar clase
   updateAdminOnlineClass$ = createEffect(() =>
     this.actions$.pipe(
@@ -198,6 +262,18 @@ export class AdminEffects {
     { dispatch: false }
   );
 
+  updateAdminOnlineClassFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.updateAdminOnlineClassFailure),
+        tap(({ error }) => {
+          console.error('[Admin] updateAdminOnlineClass error', error);
+          this.notificationService.showError('No se pudo actualizar la clase.');
+        })
+      ),
+    { dispatch: false }
+  );
+
   //eliminar clase
   deleteAdminOnlineClass$ = createEffect(() =>
     this.actions$.pipe(
@@ -211,6 +287,29 @@ export class AdminEffects {
         )
       )
     )
+  );
+
+  deleteAdminOnlineClassSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.deleteAdminOnlineClassSuccess),
+        tap(() => {
+          this.notificationService.showSuccess('Clase eliminada correctamente');
+        })
+      ),
+    { dispatch: false }
+  );
+
+  deleteAdminOnlineClassFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AdminActions.deleteAdminOnlineClassFailure),
+        tap(({ error }) => {
+          console.error('[Admin] deleteAdminOnlineClass error', error);
+          this.notificationService.showError('No se pudo eliminar la clase.');
+        })
+      ),
+    { dispatch: false }
   );
 
   //dar acceso a clase a un usuario
