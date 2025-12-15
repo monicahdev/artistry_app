@@ -1,5 +1,6 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -11,7 +12,11 @@ import { appEffects } from './app.effects';
 import { appReducers } from './app.reducers';
 import { AuthModule } from './Auth/auth.module';
 import { BookingModule } from './Bookings/bookings.module';
+import { MakeupServiceComponent } from './Makeup_Services/components/makeup-service/makeup-service.component';
 import { MakeupServicesListComponent } from './Makeup_Services/components/makeup_services-list/makeup_services-list.component';
+import { OnlineClassComponent } from './Online_Classes/components/online-class/online-class.component';
+import { OnlineClassesFormComponent } from './Online_Classes/components/online-classes-form/online-classes-form.component';
+import { OnlineClassesListComponent } from './Online_Classes/components/online-classes-list/online-classes-list.component';
 import { AboutMeComponent } from './Public/about-me/about-me.component';
 import { HomeComponent } from './Public/home/home.component';
 import { PortfolioComponent } from './Public/portfolio/portfolio.component';
@@ -19,10 +24,6 @@ import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
 import { AuthInterceptor } from './Shared/Services/auth-interceptor.service';
 import { ProfileComponent } from './User/components/profile/profile.component';
-import { OnlineClassesListComponent } from './Online_Classes/components/online-classes-list/online-classes-list.component';
-import { OnlineClassesFormComponent } from './Online_Classes/components/online-classes-form/online-classes-form.component';
-import { OnlineClassComponent } from './Online_Classes/components/online-class/online-class.component';
-import { MakeupServiceComponent } from './Makeup_Services/components/makeup-service/makeup-service.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MakeupServiceComponent } from './Makeup_Services/components/makeup-serv
     AdminModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     AuthModule,
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot(appEffects),

@@ -32,4 +32,14 @@ export class MakeupServicesListComponent implements OnInit {
       queryParams: { serviceId },
     });
   }
+
+  filterText = '';
+
+  filteredServices(services: MakeupServiceDTO[]): MakeupServiceDTO[] {
+    if (!this.filterText) return services;
+
+    return services.filter((s) =>
+      s.service_name.toLowerCase().includes(this.filterText.toLowerCase())
+    );
+  }
 }

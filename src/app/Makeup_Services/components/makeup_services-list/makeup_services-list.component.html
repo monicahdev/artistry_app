@@ -1,14 +1,18 @@
   <h1>Servicios</h1>
 
 <section class="makeup_services-list">
-
+<input
+  type="text"
+  placeholder="Buscar servicio..."
+  [(ngModel)]="filterText"
+/>
   <div *ngIf="loading$ | async">Cargando servicios...</div>
     <div class="makeup_services-grid" *ngIf="(makeupServices$ | async) as makeupServices">
     <div *ngIf="makeupServices.length === 0">
       No hay servicios disponibles de momento.
     </div>
 
-    <article class="makeup_service-card" *ngFor="let  makeupService of makeupServices">
+    <article class="makeup_service-card" *ngFor="let makeupService of filteredServices(makeupServices)">
       <div class="makeup_service-card__image" *ngIf="makeupService.photo">
         <img
           [src]="makeupService.photo"
