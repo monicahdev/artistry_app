@@ -346,6 +346,14 @@ export class AdminEffects {
         ofType(AdminActions.grantOnlineClassAccessFailure),
         tap(({ error }) => {
           console.error('[Admin] grantOnlineClassAccess error', error);
+
+          if (error?.status === 400) {
+            this.notificationService.showInfo(
+              'Ese usuario ya tenía acceso a esta clase'
+            );
+            return;
+          }
+
           this.notificationService.showError(
             'No se pudo conceder acceso a la clase.'
           );
