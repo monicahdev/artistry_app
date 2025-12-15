@@ -51,7 +51,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
         tap(() => {
-          this.notificationService.showInfo('You are logged in!');
+          this.notificationService.showInfo('Sesión iniciada');
           this.router.navigateByUrl('home');
         })
       ),
@@ -64,7 +64,7 @@ export class AuthEffects {
         ofType(AuthActions.loginFailure),
         tap(({ payload }) => {
           this.sharedService.errorLog(payload.error);
-          this.notificationService.showError('Login failure');
+          this.notificationService.showError('No se pudo iniciar sesión');
         })
       ),
     { dispatch: false }
@@ -90,7 +90,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.registerSuccess),
         tap(() => {
-          this.notificationService.showSuccess('Account created successfully!');
+          this.notificationService.showSuccess('¡Cuenta creada exitosamente!');
           this.router.navigateByUrl('auth/login');
         })
       ),
@@ -103,7 +103,7 @@ export class AuthEffects {
         ofType(AuthActions.registerFailure),
         tap(({ payload }) => {
           this.sharedService.errorLog(payload.error);
-          this.notificationService.showError('Register failure');
+          this.notificationService.showError('No se pudo crear la cuenta.');
         })
       ),
     { dispatch: false }
@@ -116,7 +116,7 @@ export class AuthEffects {
         ofType(AuthActions.logout),
         tap(() => {
           localStorage.removeItem('access_token');
-          this.notificationService.showInfo('You are logged out');
+          this.notificationService.showInfo('Sesión finalizada');
           this.router.navigateByUrl('auth/login');
         })
       ),
