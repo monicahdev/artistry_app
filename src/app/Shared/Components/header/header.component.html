@@ -1,46 +1,39 @@
 <header class="header">
-  <nav class="nav">
-    <ul>
-      <li><a routerLink="/home" routerLinkActive="active">INICIO</a></li>
-      <li><a routerLink="/about-me" routerLinkActive="active">SOBRE MÍ</a></li>
-      <li><a routerLink="/profile" routerLinkActive="active">PERFIL</a></li>
-      <li><a routerLink="/portfolio" routerLinkActive="active">MI TRABAJO</a></li>
-      <li><a routerLink="/makeup-services" routerLinkActive="active">SERVICIOS</a></li>
-      <li><a routerLink="/online-classes" routerLinkActive="active">FORMACIÓN EN LÍNEA</a></li>
-      <li><a routerLink="/bookings/me" routerLinkActive="active">MIS RESERVAS</a></li>
+  <nav class="header__nav nav">
+    <ul class="header__list nav__list">
+      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/home" routerLinkActive="active">INICIO</a></li>
+      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/about-me" routerLinkActive="active">SOBRE MÍ</a></li>
+      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/profile" routerLinkActive="active">PERFIL</a></li>
+      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/portfolio" routerLinkActive="active">MI TRABAJO</a></li>
+      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/makeup-services" routerLinkActive="active">SERVICIOS</a></li>
+      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/online-classes" routerLinkActive="active">FORMACIÓN EN LÍNEA</a></li>
+      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/bookings/me" routerLinkActive="active">MIS RESERVAS</a></li>
 
       <ng-container *ngIf="(currentUser$ | async) as user; else guestLinks">
-        <li class="user-info">
-          Hola, {{ user.email }}
+        <li class="header__user nav__item">
+          HOLA, <span class="header__user-email">{{ user.email }}</span>
         </li>
-        <li *ngIf="user.role === 'ADMIN'">
-      <a routerLink="/admin/services" routerLinkActive="active">
-        SERVICIOS ADMIN
-      </a>
-     </li>
-     <li> <a
-    *ngIf="(currentUser$ | async)?.role === 'ADMIN'"
-    routerLink="/admin/users"
-  >
-    LISTA USUARIOS
-  </a></li>
-  <li *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
-  <a routerLink="/admin/classes" routerLinkActive="active">
-    CLASES ADMIN
-  </a>
-</li>
-        <li class="auth-link">
-          <button type="button" (click)="logout()">CERRAR SESIÓN</button>
+        <li class="header__item nav__item" *ngIf="user.role === 'ADMIN'">
+          <a class="header__link nav__link" routerLink="/admin/services" routerLinkActive="active">SERVICIOS ADMIN</a>
+        </li>
+        <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
+          <a class="header__link nav__link"  routerLink="/admin/users">LISTA USUARIOS</a>
+        </li>
+        <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
+          <a class="header__link nav__link" routerLink="/admin/classes" routerLinkActive="active">CLASES ADMIN</a>
+        </li>
+        <li class="header__item nav__item">
+          <button class="header__btn btn btn--secondary" type="button" (click)="logout()">CERRAR SESIÓN</button>
         </li>
         
       </ng-container>
 
       <ng-template #guestLinks>
-        <li class="auth-link">
-          <a routerLink="/auth/login" routerLinkActive="active">INICIAR SESIÓN</a>
+        <li class="header__item nav__item">
+          <a class="header__link nav__link" routerLink="/auth/login" routerLinkActive="active">INICIAR SESIÓN</a>
         </li>
-        <li>
-          <a routerLink="/auth/register" routerLinkActive="active">
+        <li class="header__item nav__item">
+          <a class="header__link nav__link" routerLink="/auth/register" routerLinkActive="active">
             REGISTRARSE
           </a>
         </li>
