@@ -7,3 +7,19 @@
 @import 'styles/base/reset';
 @import 'styles/base/typography';
 @import 'styles/base/globals';
+ 
+@import 'styles/layout/header';
+@import 'styles/layout/footer';
+
+@import 'styles/components/buttons';
+@import 'styles/components/cards';
+@import 'styles/components/forms';
+@import 'styles/components/tables';
+
+
+@import 'styles/pages/admin';
+@import 'styles/pages/bookings';
+@import 'styles/pages/home';
+@import 'styles/pages/makeup_services';
+@import 'styles/pages/online_classes';
+@import 'styles/pages/static-pages';
