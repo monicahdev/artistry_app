@@ -1,39 +1,57 @@
-  <h1>Servicios</h1>
+<section class="makeup-services page">
+  <h2 class="makeup-services__title heading">Servicios</h2>
 
-<section class="makeup_services-list">
-<input
-  type="text"
-  placeholder="Buscar servicio..."
-  [(ngModel)]="filterText"
-/>
-  <div *ngIf="loading$ | async">Cargando servicios...</div>
-    <div class="makeup_services-grid" *ngIf="(makeupServices$ | async) as makeupServices">
-    <div *ngIf="makeupServices.length === 0">
-      No hay servicios disponibles de momento.
+  <section class="makeup-services__search">
+    <input
+      class="makeup-services__search-input form__input"
+      type="text"
+      placeholder="Buscar servicio..."
+      [(ngModel)]="filterText"
+    />
+
+    <div class="makeup-services__loading" *ngIf="loading$ | async">
+      Cargando servicios...
     </div>
 
-    <article class="makeup_service-card" *ngFor="let makeupService of filteredServices(makeupServices)">
-      <div class="makeup_service-card__image" *ngIf="makeupService.photo">
-        <img
-          [src]="makeupService.photo"
-          [alt]="makeupService.service_name"
-        />
+    <div class="makeup-services__grid" *ngIf="(makeupServices$ | async) as makeupServices">
+      <div class="makeup-services__empty" *ngIf="makeupServices.length === 0">
+        No hay servicios disponibles de momento.
       </div>
 
-      <div class="makeup_service-card__content">
-        <a [routerLink]="['/makeup-services', makeupService.id]"><h2>{{ makeupService.service_name }}</h2></a>
+      <article
+        class="makeup-services__card card"
+        *ngFor="let makeupService of filteredServices(makeupServices)"
+      >
+        <div class="card__image" *ngIf="makeupService.photo">
+          <img
+            class="card__img"
+            [src]="makeupService.photo"
+            [alt]="makeupService.service_name"
+          />
+        </div>
 
-        <p class="makeup_service-card__description">
-          {{ makeupService.description }}
-        </p>
+        <div class="card__content">
+          <a class="card__link" [routerLink]="['/makeup-services', makeupService.id]">
+            <h3 class="card__title">{{ makeupService.service_name }}</h3>
+          </a>
 
-        <p class="makeup_service-card__meta">
-          Desde
-          <strong>{{ makeupService.price_from | currency : 'COP ' }}</strong>
-          · {{ makeupService.duration }} min
-        </p>
-      </div>
-      <button type="button" (click)="onBook(makeupService.id)">RESERVAR</button>
-    </article>
-  </div>
+          <p class="card__description">
+            {{ makeupService.description }}
+          </p>
+
+          <p class="card__meta">
+            Desde
+            <strong class="card__price">
+              {{ makeupService.price_from | currency : 'COP ' }}
+            </strong>
+            · <span class="card__duration">{{ makeupService.duration }}</span> min
+          </p>
+        </div>
+
+        <button class="card__cta btn btn--accent" type="button" (click)="onBook(makeupService.id)">
+          RESERVAR
+        </button>
+      </article>
+    </div>
+  </section>
 </section>

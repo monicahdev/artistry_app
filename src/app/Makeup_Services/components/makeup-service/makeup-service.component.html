@@ -1,17 +1,17 @@
-<section *ngIf="makeupService$ | async as makeupService">
-  <button type="button" (click)="router.navigate(['/makeup-services'])">
+<section class="makeup-service-detail page" *ngIf="makeupService$ | async as makeupService">
+  <button class="makeup-service-detail__back btn btn--secondary" type="button" (click)="router.navigate(['/makeup-services'])">
     Volver a servicios
   </button>
 
-  <div>
-    <div >
-      <h1>{{ makeupService.service_name }}</h1>
+  <div class="makeup-service-detail__layout">
+    <div class="makeup-service-detail__content">
+      <h2 class="makeup-service-detail__title heading">{{ makeupService.service_name }}</h2>
 
-      <p >
+      <p class="makeup-service-detail__price">
         Desde {{ makeupService.price_from | currency : 'COP ' }}
       </p>
 
-      <p >
+      <p class="makeup-service-detail__duration">
         Duración aproximada: {{ makeupService.duration }} min
       </p>
 
@@ -19,16 +19,17 @@
         {{ makeupService.description }}
       </p>
 
-      <button type="button" (click)="onBook(makeupService.id)">
-RESERVAR      </button>
+      <button class="makeup-service-detail__cta btn btn--accent" type="button" (click)="onBook(makeupService.id)">
+        RESERVAR
+      </button>
     </div>
 
-    <div *ngIf="makeupService.img">
-      <img [src]="makeupService.img" [alt]="makeupService.service_name" />
+    <div class="makeup-service-detail__media" *ngIf="makeupService.img">
+      <img class="makeup-service-detail__media" [src]="makeupService.img" [alt]="makeupService.service_name" />
     </div>
   </div>
 </section>
 
-<div *ngIf="loading$ | async">
+<div class="makeup-service-detail__loading" *ngIf="loading$ | async">
   Cargando servicio...
 </div>
