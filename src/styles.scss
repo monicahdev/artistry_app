@@ -3,4 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "styles/components";
+/* Base stylesheets */
+@import 'styles/base/reset';
+@import 'styles/base/typography';
+@import 'styles/base/globals';
