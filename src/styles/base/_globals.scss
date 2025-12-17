@@ -1,0 +1,28 @@
+body {
+  @apply bg-bg;
+}
+
+/* Generic page wrapper */
+.page {
+  @apply px-4 py-6 md:px-8 lg:px-12;
+}
+
+/* Centered container if needed */
+.container {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Sections spacing */
+section {
+  @apply mb-8;
+}
+
+/* Strong & emphasis */
+strong {
+  @apply font-bold;
+}
+
+/* Disabled state */
+[disabled] {
+  @apply opacity-50 cursor-not-allowed;
+}
