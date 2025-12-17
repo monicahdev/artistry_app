@@ -1,49 +1,47 @@
-<p>online-classes-admin-form works!</p>
-<section class="admin-class-form">
-  <h1>{{ isEditMode ? 'Editar clase' : 'Crear clase' }}</h1>
+<section class="admin-class-form page">
+  <h2 class="admin-class-form__title heading"> {{ isEditMode ? 'Editar clase' : 'Crear clase' }}</h2>
 
-  <form [formGroup]="classForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Nombre de la clase</label>
-      <input
+  <form class="admin-class-form__form form" [formGroup]="classForm" (ngSubmit)="onSubmit()">
+    <div class="form__group admin-class-form__group">
+      <label class="form__label" for="name">Nombre de la clase</label>
+      <input class="form__input" 
         id="name"
         type="text"
         [formControl]="name"
       />
-      <div class="error" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <div class="form__error" *ngIf="name.invalid && (name.dirty || name.touched)">
         El nombre es obligatorio.
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="description">Descripción</label>
-      <textarea
+    <div class="form__group admin-class-form__group">
+      <label class="form__label" for="description">Descripción</label>
+      <textarea class="form__input form__input--textarea"
         id="description"
         rows="4"
         [formControl]="description"
         placeholder="Describe el contenido de la clase..."
       ></textarea>
       <div
-        class="error"
-        *ngIf="
-          description.invalid && (description.dirty || description.touched)
-        "
-      >
+        class="form__error"
+        *ngIf="description.invalid && (description.dirty || description.touched)">
         La descripción es obligatoria.
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="url">URL</label>
-      <input id="url" type="text" [formControl]="url" />
-      <div class="error" *ngIf="url.invalid && (url.dirty || url.touched)">
+    <div class="form__group admin-class-form__group">
+      <label class="form__label" for="url">URL</label>
+      <input class="form__input" id="url" type="text" [formControl]="url" />
+      <div class="form__error" *ngIf="url.invalid && (url.dirty || url.touched)">
         La URL es obligatoria.
       </div>
     </div>
 
-    <button type="submit">
+    <div class="admin-class-form__actions">
+      <button class="admin-class-form__submit btn btn--accent" type="submit">
       {{ isEditMode ? 'Actualizar clase' : 'Crear clase' }}
-    </button>
-    <button type="button" (click)="onCancel()">Cancelar</button>
+      </button>
+      <button class="admin-class-form__cancel btn btn--secondary" type="button" (click)="onCancel()">Cancelar</button>
+    </div>  
   </form>
 </section>

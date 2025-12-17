@@ -1,51 +1,51 @@
-<section class="admin-service-form">
-  <h1>{{ isEditMode ? 'Editar servicio' : 'Nuevo servicio' }}</h1>
+<section class="admin-service-form page">
+  <h2 class="admin-service-form__title heading">{{ isEditMode ? 'Editar servicio' : 'Nuevo servicio' }}</h2>
 
-  <form [formGroup]="makeup_serviceForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="makeup_service_name">Nombre del servicio</label>
-      <input
+  <form  class="admin-service-form__form form" [formGroup]="makeup_serviceForm" (ngSubmit)="onSubmit()">
+    <div class="form__group admin-service-form__group">
+      <label class="form__label" for="makeup_service_name">Nombre del servicio</label>
+      <input class="form__input"
         id="makeup_service_name"
         type="text"
         [formControl]="makeup_service_name"
         placeholder="Maquillaje social, novia, invitada..."
       />
       <div
-        class="error"
+       class="form__error"
         *ngIf="makeup_service_name.invalid && (makeup_service_name.dirty || makeup_service_name.touched)"
       >
         El nombre es obligatorio.
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="description">Descripción</label>
-      <textarea
+    <div lass="form__group admin-service-form__group">
+      <label class="form__label" for="description">Descripción</label>
+      <textarea class="form__input form__input--textarea"
         id="description"
         rows="4"
         [formControl]="description"
         placeholder="Describe el servicio: ocasión, estilo, acabados..."
       ></textarea>
       <div
-        class="error"
+        class="form__error"
         *ngIf="description.invalid && (description.dirty || description.touched)"
       >
         La descripción es obligatoria.
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="photo">URL de la foto</label>
-      <input
+    <div class="form__group admin-service-form__group">
+      <label class="form__label" for="photo">URL de la foto</label>
+      <input class="form__input"
         id="photo"
         type="text"
         [formControl]="photo"
       />
     </div>
 
-    <div class="form-group">
-      <label for="price_from">Precio desde (COP)</label>
-      <input
+    <div class="form__group admin-service-form__group">
+      <label class="form__label" for="price_from">Precio desde (COP)</label>
+      <input class="form__input"
         id="price_from"
         type="number"
         [formControl]="price_from"
@@ -53,16 +53,16 @@
         step="1000"
       />
       <div
-        class="error"
+        class="form__error"
         *ngIf="price_from.invalid && (price_from.dirty || price_from.touched)"
       >
         El precio es obligatorio y debe ser mayor o igual que 0.
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="duration">Duración (minutos)</label>
-      <input
+    <div class="form__group admin-service-form__group">
+      <label class="form__label" for="duration">Duración (minutos)</label>
+      <input class="form__input"
         id="duration"
         type="number"
         [formControl]="duration"
@@ -70,14 +70,14 @@
         step="5"
       />
       <div
-        class="error"
+        class="form__error"
         *ngIf="duration.invalid && (duration.dirty || duration.touched)"
       >
         La duración mínima de cada servicio es 60 minutos
       </div>
     </div>
 
-    <button type="submit">
+    <button class="admin-service-form__submit btn btn--accent" type="submit">
       {{ isEditMode ? 'Guardar cambios' : 'Guardar servicio' }}
     </button>
   </form>
