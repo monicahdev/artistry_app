@@ -1,10 +1,10 @@
-<section class="booking-form">
-  <h1>{{ isEditMode ? 'Editar reserva' : 'Reservar servicio' }}</h1>
+<section class="booking-form page">
+  <h2 class="booking-form__title heading">{{ isEditMode ? 'Editar reserva' : 'Reservar servicio' }}</h2>
 
-  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="service_id">Servicio</label>
-      <select id="service_id" [formControl]="service_id">
+  <form class="booking-form__form form" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    <div class="form__group booking-form__group">
+      <label class="form__label" for="service_id">Servicio</label>
+      <select class="form__select" id="service_id" [formControl]="service_id">
         <option value="" disabled selected>Selecciona un servicio</option>
         <option
           *ngFor="let s of (services$ | async)!"
@@ -14,31 +14,31 @@
         </option>
       </select>
       <div
-        class="error"
+        class="form__error"
         *ngIf="service_id.invalid && (service_id.dirty || service_id.touched)"
       >
         Debes seleccionar un servicio.
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="date_hour">Fecha y hora</label>
-      <input
+    <div class="form__group booking-form__group">
+      <label class="form__label" for="date_hour">Fecha y hora</label>
+      <input class="form__input"
         id="date_hour"
         type="datetime-local"
         [formControl]="date_hour"
       />
       <div
-        class="error"
+        class="form__error"
         *ngIf="date_hour.invalid && (date_hour.dirty || date_hour.touched)"
       >
         Debes seleccionar una fecha y hora.
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="comments">Comentarios</label>
-      <textarea
+    <div class="form__group booking-form__group">
+      <label class="form__label" for="comments">Comentarios</label>
+      <textarea class="form__input form__input--textarea"
         id="comments"
         rows="3"
         [formControl]="comments"
@@ -46,7 +46,7 @@
       ></textarea>
     </div>
 
-    <button type="submit">
+    <button class="booking-form__submit btn btn--accent" type="submit">
        {{ isEditMode ? 'GUARDAR CAMBIOS' : 'RESERVAR' }}
     </button>
   </form>
