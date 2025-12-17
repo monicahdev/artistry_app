@@ -1,28 +1,28 @@
-<section class="online-classes page">
-  <h2 class="online-classes__title heading">Formación en línea</h2>
+<div class="container">
+  <section class="online-classes page">
+    <h2 class="online-classes__title heading">Formación en línea</h2>
+    <section
+      class="online-classes__grid" *ngIf="(classes$ | async) as onlineClasses">
+      <p class="online-classes__empty" *ngIf="onlineClasses.length === 0">
+        Aún no tienes clases disponibles.
+      </p>
 
-  <div class="online-classes__loading" *ngIf="loading$ | async">Cargando clases...</div>
-
-  <section
-    class="online-classes__grid" *ngIf="(classes$ | async) as onlineClasses">
-    <p class="online-classes__empty" *ngIf="onlineClasses.length === 0">
-      Aún no tienes clases disponibles.
-    </p>
-
-     <article
-      class="online-classes__card card" *ngFor="let onlineClass of onlineClasses">
-       <div class="card__content">
-        <a class="card__link" [routerLink]="['/online-classes', onlineClass.id]">
-          <h3 class="card__title">
-            {{ onlineClass.name }}
-          </h3>
+      <article
+        class="online-classes__card card" *ngFor="let onlineClass of onlineClasses">
+        <div class="card__content">
+          <a class="card__link" [routerLink]="['/online-classes', onlineClass.id]">
+            <h3 class="card__title">
+              {{ onlineClass.name }}
+            </h3>
+          </a>
+          <p lass="card__description">{{ onlineClass.description }}</p>
+        </div>
+        <a class="card__cta btn btn--accent"
+            [routerLink]="['/online-classes', onlineClass.id]">VER CLASE 
         </a>
-        <p lass="card__description">{{ onlineClass.description }}</p>
-      </div>
-      <a class="card__cta btn btn--accent"
-          [routerLink]="['/online-classes', onlineClass.id]">VER CLASE 
-      </a>
-    
-  </article>
+      
+    </article>
+    </section>
   </section>
-</section>
+  <div class="online-classes__loading" *ngIf="loading$ | async">Cargando clases...</div>
+</div>  

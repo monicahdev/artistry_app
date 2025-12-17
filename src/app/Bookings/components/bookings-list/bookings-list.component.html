@@ -1,42 +1,43 @@
+<div class="container">
+  <section class="bookings page">
+    <h2 class="bookings__title heading">Mis reservas</h2>
 
-<section class="bookings page">
-  <h2 class="bookings__title heading">Mis reservas</h2>
+    <div class="bookings__loading" *ngIf="loading$ | async">Cargando reservas...</div>
 
-  <div class="bookings__loading" *ngIf="loading$ | async">Cargando reservas...</div>
+    <div class="bookings__table table-wrapper" *ngIf="(bookings$ | async) as bookings">
+      <table class="table">
+      <thead class="table__head">
+        <tr>
+          <th class="table__cell">Servicio</th>
+          <th class="table__cell">Fecha y hora</th>
+          <th class="table__cell">Estado</th>
+          <th class="table__cell">Comentarios</th>
+          <th class="table__cell">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table__row" *ngIf="bookings.length === 0">
+          <td lass="table__cell" colspan="6">No tienes reservas todavía.</td>
+        </tr>
 
-   <div class="bookings__table table-wrapper" *ngIf="(bookings$ | async) as bookings">
-    <table class="table">
-    <thead class="table__head">
-      <tr>
-        <th class="table__cell">Servicio</th>
-        <th class="table__cell">Fecha y hora</th>
-        <th class="table__cell">Estado</th>
-        <th class="table__cell">Comentarios</th>
-        <th class="table__cell">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table__row" *ngIf="bookings.length === 0">
-        <td lass="table__cell" colspan="6">No tienes reservas todavía.</td>
-      </tr>
-
-      <tr class="table__row" *ngFor="let booking of bookings">
-        <td class="table__cell">#{{ booking.service_id }}</td>
-        <td class="table__cell">{{ booking.date_hour | date: 'dd/MM/yyyy HH:mm' }}</td>
-        <td class="table__cell">{{ booking.status }}</td>
-        <td class="table__cell">{{ booking.comments }}</td>
-        <td class="table__cell">
-          <div class="table__actions bookings__actions">
-              <button class="btn btn--secondary"(click)="onEditBooking(booking)">
-              EDITAR RESERVA
-              </button>
-              <button class="btn btn--accent" type="button" (click)="onDeleteBooking(booking.id)">
-                ELIMINAR RESERVA
-              </button>
-             </div>  
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-</section>
+        <tr class="table__row" *ngFor="let booking of bookings">
+          <td class="table__cell">#{{ booking.service_id }}</td>
+          <td class="table__cell">{{ booking.date_hour | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td class="table__cell">{{ booking.status }}</td>
+          <td class="table__cell">{{ booking.comments }}</td>
+          <td class="table__cell">
+            <div class="table__actions bookings__actions">
+                <button class="btn btn--secondary"(click)="onEditBooking(booking)">
+                EDITAR RESERVA
+                </button>
+                <button class="btn btn--accent" type="button" (click)="onDeleteBooking(booking.id)">
+                  ELIMINAR RESERVA
+                </button>
+              </div>  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+</div>  

@@ -1,99 +1,101 @@
-<header class="header">
-  <div class="header__brand">
-     <!--MOBILE-->
-    <button class="header__menu-btn" type="button" (click)="toggleMenu()"> ☰</button>
-     <ul class="header__menu nav__list" [class.header__menu--open]="isMenuOpen">
-      <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/home" routerLinkActive="header__link--active nav__link--active">INICIO</a></li>
-      <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/about-me" routerLinkActive="header__link--active nav__link--active">SOBRE MÍ</a></li>
-      <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/portfolio" routerLinkActive="header__link--active nav__link--active">MI TRABAJO</a></li>
-      <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/makeup-services" routerLinkActive="header__link--active nav__link--active">SERVICIOS</a></li>
-      <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/online-classes" routerLinkActive="header__link--active nav__link--active">FORMACIÓN EN LÍNEA</a></li>
+<div class="container">
+  <header class="header">
+    <div class="header__brand">
+      <!--MOBILE-->
+      <button class="header__menu-btn" type="button" (click)="toggleMenu()"> ☰</button>
+      <ul class="header__menu nav__list" [class.header__menu--open]="isMenuOpen">
+        <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/home" routerLinkActive="header__link--active nav__link--active">INICIO</a></li>
+        <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/about-me" routerLinkActive="header__link--active nav__link--active">SOBRE MÍ</a></li>
+        <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/portfolio" routerLinkActive="header__link--active nav__link--active">MI TRABAJO</a></li>
+        <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/makeup-services" routerLinkActive="header__link--active nav__link--active">SERVICIOS</a></li>
+        <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/online-classes" routerLinkActive="header__link--active nav__link--active">FORMACIÓN EN LÍNEA</a></li>
 
-      <ng-container *ngIf="(currentUser$ | async) as user; else guestLinksMobile">
-        <li class="header__user nav__item">Hola, <span class="header__user-email">{{ user.email }}</span></li>
+        <ng-container *ngIf="(currentUser$ | async) as user; else guestLinksMobile">
+          <li class="header__user nav__item">Hola, <span class="header__user-email">{{ user.email }}</span></li>
 
-        <li class="header__item nav__item">
-          <a class="header__link nav__link" (click)="closeMenu()" routerLink="/profile" routerLinkActive="header__link--active nav__link--active">PERFIL</a>
-        </li>
-        <li class="header__item nav__item" *ngIf="user.role === 'USER'">
-          <a class="header__link nav__link" (click)="closeMenu()" routerLink="/bookings/me" routerLinkActive="header__link--active nav__link--active">MIS RESERVAS</a>
-        </li>
-        <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
-          <a class="header__link nav__link" (click)="closeMenu()" routerLink="/admin/users" routerLinkActive="header__link--active nav__link--active">LISTA USUARIOS</a>
-        </li>
-        <li class="header__item nav__item" *ngIf="user.role === 'ADMIN'">
-          <a class="header__link nav__link" (click)="closeMenu()" routerLink="/admin/services" routerLinkActive="header__link--active nav__link--active">SERVICIOS ADMIN</a>
-        </li>   
-        
-        <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
-          <a class="header__link nav__link" (click)="closeMenu()" routerLink="/admin/classes" routerLinkActive="header__link--active nav__link--active">CLASES ADMIN</a>
-        </li>
-
-        <li class="header__auth nav__item">
-          <button class="header__btn btn btn--secondary" type="button" (click)="logout()">CERRAR SESIÓN</button>
-        </li>
-      </ng-container>
-
-      <ng-template #guestLinksMobile>
-        <li class="header__auth nav__item">
-          <a class="header__link nav__link" (click)="closeMenu()" routerLink="/auth/login" routerLinkActive="header__link--active nav__link--active">INICIAR SESIÓN</a>
-        </li>
-        <li class="header__item nav__item">
-          <a class="header__link nav__link" (click)="closeMenu()" routerLink="/auth/register" routerLinkActive="header__link--active nav__link--active">REGISTRARSE</a>
-        </li>
-      </ng-template>
-    </ul>
-    <h1 class="header__title">Artistry by Sara</h1>
-    <p class="header__subtitle">Makeup Artist</p>
-  </div>
-
-  <nav class="header__nav nav">
-    <ul class="header__list nav__list">
-      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/home" routerLinkActive="header__link--active nav__link--active">INICIO</a></li>
-      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/about-me" routerLinkActive="header__link--active nav__link--active">SOBRE MÍ</a></li>
-      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/portfolio" routerLinkActive="header__link--active nav__link--active">MI TRABAJO</a></li>
-      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/makeup-services" routerLinkActive="header__link--active nav__link--active">SERVICIOS</a></li>
-      <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/online-classes" routerLinkActive="header__link--active nav__link--active">FORMACIÓN EN LÍNEA</a></li>
-      
-
-      <ng-container *ngIf="(currentUser$ | async) as user; else guestLinks">
-        <li class="header__user nav__item">
-          HOLA, <span class="header__user-email">{{ user.email }}</span>
-        </li>
-        <li class="header__item nav__item">
-          <a class="header__link nav__link" routerLink="/profile" routerLinkActive="header__link--active nav__link--active">PERFIL</a></li>
-        <li class="header__item nav__item" *ngIf="user.role === 'USER'">
-          <a class="header__link nav__link" routerLink="/bookings/me" routerLinkActive="header__link--active nav__link--active">MIS RESERVAS</a></li>
-        <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
-          <a class="header__link nav__link"  routerLink="/admin/users" routerLinkActive="header__link--active nav__link--active">LISTA USUARIOS</a>
-        </li>
+          <li class="header__item nav__item">
+            <a class="header__link nav__link" (click)="closeMenu()" routerLink="/profile" routerLinkActive="header__link--active nav__link--active">PERFIL</a>
+          </li>
+          <li class="header__item nav__item" *ngIf="user.role === 'USER'">
+            <a class="header__link nav__link" (click)="closeMenu()" routerLink="/bookings/me" routerLinkActive="header__link--active nav__link--active">MIS RESERVAS</a>
+          </li>
+          <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
+            <a class="header__link nav__link" (click)="closeMenu()" routerLink="/admin/users" routerLinkActive="header__link--active nav__link--active">LISTA USUARIOS</a>
+          </li>
           <li class="header__item nav__item" *ngIf="user.role === 'ADMIN'">
-          <a class="header__link nav__link" routerLink="/admin/services" routerLinkActive="header__link--active nav__link--active">SERVICIOS ADMIN</a>
-        </li>
+            <a class="header__link nav__link" (click)="closeMenu()" routerLink="/admin/services" routerLinkActive="header__link--active nav__link--active">SERVICIOS ADMIN</a>
+          </li>   
+          
+          <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
+            <a class="header__link nav__link" (click)="closeMenu()" routerLink="/admin/classes" routerLinkActive="header__link--active nav__link--active">CLASES ADMIN</a>
+          </li>
+
+          <li class="header__auth nav__item">
+            <button class="header__btn btn btn--secondary" type="button" (click)="logout()">CERRAR SESIÓN</button>
+          </li>
+        </ng-container>
+
+        <ng-template #guestLinksMobile>
+          <li class="header__auth nav__item">
+            <a class="header__link nav__link" (click)="closeMenu()" routerLink="/auth/login" routerLinkActive="header__link--active nav__link--active">INICIAR SESIÓN</a>
+          </li>
+          <li class="header__item nav__item">
+            <a class="header__link nav__link" (click)="closeMenu()" routerLink="/auth/register" routerLinkActive="header__link--active nav__link--active">REGISTRARSE</a>
+          </li>
+        </ng-template>
+      </ul>
+      <h1 class="header__title">Artistry by Sara</h1>
+      <p class="header__subtitle">Makeup Artist</p>
+    </div>
+
+    <nav class="header__nav nav">
+      <ul class="header__list nav__list">
+        <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/home" routerLinkActive="header__link--active nav__link--active">INICIO</a></li>
+        <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/about-me" routerLinkActive="header__link--active nav__link--active">SOBRE MÍ</a></li>
+        <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/portfolio" routerLinkActive="header__link--active nav__link--active">MI TRABAJO</a></li>
+        <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/makeup-services" routerLinkActive="header__link--active nav__link--active">SERVICIOS</a></li>
+        <li class="header__item nav__item"><a class="header__link nav__link" routerLink="/online-classes" routerLinkActive="header__link--active nav__link--active">FORMACIÓN EN LÍNEA</a></li>
         
-        <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
-          <a class="header__link nav__link" routerLink="/admin/classes" routerLinkActive="header__link--active nav__link--active">CLASES ADMIN</a>
-        </li>
-        <li class="header__item nav__item">
-          <button class="header__btn btn btn--secondary" type="button" (click)="logout()">CERRAR SESIÓN</button>
-        </li>
-        
-      </ng-container>
 
-      <ng-template #guestLinks>
-        <li class="header__item nav__item">
-          <a class="header__link nav__link" routerLink="/auth/login" routerLinkActive="header__link--active nav__link--active">INICIAR SESIÓN</a>
-        </li>
-        <li class="header__item nav__item">
-          <a class="header__link nav__link" routerLink="/auth/register" routerLinkActive="header__link--active nav__link--active">
-            REGISTRARSE
-          </a>
-        </li>
-      </ng-template>
-    </ul>
+        <ng-container *ngIf="(currentUser$ | async) as user; else guestLinks">
+          <li class="header__user nav__item">
+            HOLA, <span class="header__user-email">{{ user.email }}</span>
+          </li>
+          <li class="header__item nav__item">
+            <a class="header__link nav__link" routerLink="/profile" routerLinkActive="header__link--active nav__link--active">PERFIL</a></li>
+          <li class="header__item nav__item" *ngIf="user.role === 'USER'">
+            <a class="header__link nav__link" routerLink="/bookings/me" routerLinkActive="header__link--active nav__link--active">MIS RESERVAS</a></li>
+          <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
+            <a class="header__link nav__link"  routerLink="/admin/users" routerLinkActive="header__link--active nav__link--active">LISTA USUARIOS</a>
+          </li>
+            <li class="header__item nav__item" *ngIf="user.role === 'ADMIN'">
+            <a class="header__link nav__link" routerLink="/admin/services" routerLinkActive="header__link--active nav__link--active">SERVICIOS ADMIN</a>
+          </li>
+          
+          <li class="header__item nav__item" *ngIf="(currentUser$ | async)?.role === 'ADMIN'">
+            <a class="header__link nav__link" routerLink="/admin/classes" routerLinkActive="header__link--active nav__link--active">CLASES ADMIN</a>
+          </li>
+          <li class="header__item nav__item">
+            <button class="header__btn btn btn--secondary" type="button" (click)="logout()">CERRAR SESIÓN</button>
+          </li>
+          
+        </ng-container>
+
+        <ng-template #guestLinks>
+          <li class="header__item nav__item">
+            <a class="header__link nav__link" routerLink="/auth/login" routerLinkActive="header__link--active nav__link--active">INICIAR SESIÓN</a>
+          </li>
+          <li class="header__item nav__item">
+            <a class="header__link nav__link" routerLink="/auth/register" routerLinkActive="header__link--active nav__link--active">
+              REGISTRARSE
+            </a>
+          </li>
+        </ng-template>
+      </ul>
 
 
-   
+    
 
-  </nav>
-</header>
+    </nav>
+  </header>
+</div>  

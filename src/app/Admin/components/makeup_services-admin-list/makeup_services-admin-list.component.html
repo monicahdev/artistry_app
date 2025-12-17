@@ -1,48 +1,50 @@
-<section class="admin-services page">
-  <div class="admin-services__header">
-    <h2 class="admin-services__title heading">Servicios (Admin)</h2>
+<div class="container">
+  <section class="admin-services page">
+    <div class="admin-services__header">
+      <h2 class="admin-services__title heading">Servicios (Admin)</h2>
 
-    <button class="admin-services__new btn btn--accent" type="button" (click)="onNewMakeupService()">
-      CREAR NUEVO SERVICIO
-    </button>
-  </div>
+      <button class="admin-services__new btn btn--accent" type="button" (click)="onNewMakeupService()">
+        CREAR NUEVO SERVICIO
+      </button>
+    </div>
 
-  <div class="admin-services__table table-wrapper" *ngIf="(makeup_services$ | async) as makeup_services">
-    <table class="table">
-      <thead class="table__head">
-        <tr>
-          <th class="table__cell">ID</th>
-          <th class="table__cell">Nombre</th>
-          <th class="table__cell">Precio desde</th>
-          <th class="table__cell">Descripción</th>
-          <th class="table__cell">Duración (min)</th>
-          <th class="table__cell">Acciones</th>
-        </tr>
-      </thead>
+    <div class="admin-services__table table-wrapper" *ngIf="(makeup_services$ | async) as makeup_services">
+      <table class="table">
+        <thead class="table__head">
+          <tr>
+            <th class="table__cell">ID</th>
+            <th class="table__cell">Nombre</th>
+            <th class="table__cell">Precio desde</th>
+            <th class="table__cell">Descripción</th>
+            <th class="table__cell">Duración (min)</th>
+            <th class="table__cell">Acciones</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr class="table__row" *ngIf="makeup_services.length === 0">
-          <td colspan="5">No hay servicios creados todavía.</td>
-        </tr>
+        <tbody>
+          <tr class="table__row" *ngIf="makeup_services.length === 0">
+            <td colspan="5">No hay servicios creados todavía.</td>
+          </tr>
 
-        <tr class="table__row" *ngFor="let makeup_service of makeup_services">
-          <td class="table__cell">{{ makeup_service.id }}</td>
-          <td class="table__cell">{{ makeup_service.service_name }}</td>
-          <td class="table__cell">{{ makeup_service.price_from | currency : 'COP ' }}</td>
-          <td class="table__cell">{{ makeup_service.description }}</td>
-          <td class="table__cell">{{ makeup_service.duration }}</td>
-          <td>
-            <div class="table__actions admin-services__actions">
-              <button class="btn btn--secondary" type="button" (click)="onEditMakeupService(makeup_service)">
-                Editar
-              </button>
-              <button class="btn btn--accent" type="button" (click)="onDeleteMakeupService(makeup_service.id)">
-                Eliminar
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+          <tr class="table__row" *ngFor="let makeup_service of makeup_services">
+            <td class="table__cell">{{ makeup_service.id }}</td>
+            <td class="table__cell">{{ makeup_service.service_name }}</td>
+            <td class="table__cell">{{ makeup_service.price_from | currency : 'COP ' }}</td>
+            <td class="table__cell">{{ makeup_service.description }}</td>
+            <td class="table__cell">{{ makeup_service.duration }}</td>
+            <td>
+              <div class="table__actions admin-services__actions">
+                <button class="btn btn--secondary" type="button" (click)="onEditMakeupService(makeup_service)">
+                  Editar
+                </button>
+                <button class="btn btn--accent" type="button" (click)="onDeleteMakeupService(makeup_service.id)">
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>  

@@ -1,8 +1,10 @@
-<section class="profile page">
-  <h2 class="profile__title heading">Mi perfil</h2>
+<div class="container">
+  <section class="profile page">
+    <h2 class="profile__title heading">Mi perfil</h2>
 
-  <div class="profile__content" *ngIf="user$ | async as user">
-    <p class="profile__field"><strong>Email:</strong> {{ user.email }}</p>
-    <p class="profile__field"><strong>Rol:</strong> {{ user.role }}</p>
-  </div>
-</section>
+    <div class="profile__content" *ngIf="user$ | async as user">
+      <p class="profile__field"><strong>Email:</strong> {{ user.email }}</p>
+      <p class="profile__field"><strong>Rol:</strong> {{ user.role }}</p>
+    </div>
+  </section>
+</div>  

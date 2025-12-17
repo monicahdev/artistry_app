@@ -1,9 +1,11 @@
-<section class="admin-users page">
-  <h2 class="admin-users__title heading">Usuarios</h2>
-  <div class="admin-users__loading" *ngIf="loading$ | async">Cargando usuarios...</div>
-  <ul class="admin-users__list" *ngIf="(users$ | async) as users">
-    <li class="admin-users__item" *ngFor="let user of users">
-      <strong>USER ID {{ user.id }} - {{ user.email }}</strong> - {{ user.role }}
-    </li>
-  </ul>
-</section>
+<div class="container">
+  <section class="admin-users page">
+    <h2 class="admin-users__title heading">Usuarios</h2>
+    <div class="admin-users__loading" *ngIf="loading$ | async">Cargando usuarios...</div>
+    <ul class="admin-users__list" *ngIf="(users$ | async) as users">
+      <li class="admin-users__item" *ngFor="let user of users">
+        <strong>USER ID {{ user.id }} - {{ user.email }}</strong> - {{ user.role }}
+      </li>
+    </ul>
+  </section>
+</div>
