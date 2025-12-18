@@ -1,8 +1,10 @@
 <div class="container">
   <header class="header">
     <div class="header__brand">
-      <!--MOBILE-->
-      <button class="header__menu-btn" type="button" (click)="toggleMenu()"> ☰</button>
+      <h1 class="header__title">Artistry by Sara</h1>
+      <h2 class="header__subtitle">Makeup Artist</h2>
+     <!--MOBILE-->
+     <button class="header__menu-btn" type="button" (click)="toggleMenu()"> ☰</button>
       <ul class="header__menu nav__list" [class.header__menu--open]="isMenuOpen">
         <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/home" routerLinkActive="header__link--active nav__link--active">INICIO</a></li>
         <li class="header__item nav__item"><a class="header__link nav__link" (click)="closeMenu()" routerLink="/about-me" routerLinkActive="header__link--active nav__link--active">SOBRE MÍ</a></li>
@@ -43,9 +45,7 @@
             <a class="header__link nav__link" (click)="closeMenu()" routerLink="/auth/register" routerLinkActive="header__link--active nav__link--active">REGISTRARSE</a>
           </li>
         </ng-template>
-      </ul>
-      <h1 class="header__title">Artistry by Sara</h1>
-      <p class="header__subtitle">Makeup Artist</p>
+      </ul>  
     </div>
 
     <nav class="header__nav nav">
