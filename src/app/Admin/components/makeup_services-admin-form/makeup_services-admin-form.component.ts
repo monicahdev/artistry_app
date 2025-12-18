@@ -105,4 +105,8 @@ export class MakeupServicesAdminFormComponent implements OnInit {
       this.router.navigate(['/admin/services']);
     }
   }
+
+  onCancel(): void {
+    this.router.navigate(['/admin/services']);
+  }
 }
