@@ -1,9 +1,9 @@
 <div class="container">
-  <section class="register page">
-    <h2 class="register__title heading">Crear cuenta</h2>
+  <section class="auth page">
+    <h2 class="auth__title heading">Crear cuenta</h2>
 
     <form
-      class="register__form form"
+      class="auth__form register__form"
       [formGroup]="registerForm"
       (ngSubmit)="onSubmit()"
       novalidate
@@ -18,7 +18,7 @@
           placeholder="tu@email.com"
         />
 
-        <div class="error" *ngIf="email.invalid && (email.dirty || email.touched)">
+        <div class="form__error" *ngIf="email.invalid && (email.dirty || email.touched)">
           <span *ngIf="email.errors?.['required']">El email es obligatorio.</span>
           <span *ngIf="email.errors?.['email']">
             Debes introducir un email válido.

@@ -1,15 +1,15 @@
 <div class="container">
-  <section class="login page">
-    <h2 class="login__title heading">Iniciar sesión</h2>
+  <section class="auth page">
+    <h2 class="auth__title heading">Iniciar sesión</h2>
 
     <form
-      class="login__form form"
+      class="auth__form login__form"
       [formGroup]="loginForm"
       (ngSubmit)="login()"
       novalidate
     >
 
-    <div class="form-group login__group">
+    <div class="form__group login__group">
         <label class="form__label" for="email">Email</label>
         <input  class="form__input"
           id="email"
@@ -28,7 +28,7 @@
         </div>
       </div>
 
-      <div class="form-group login__group">
+      <div class="form__group login__group">
         <label class="form__label" for="password">Contraseña</label>
         <input class="form__input"
           id="password"
