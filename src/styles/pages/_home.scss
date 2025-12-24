@@ -1,0 +1,15 @@
+@layer components {
+
+  /* Home */
+  
+  .home {
+    @apply relative min-h-[100svh];
+    width: 100vw;
+    
+  }
+
+  .home__image {
+    @apply absolute inset-0 h-full mx-auto max-w-full object-cover object-center;
+  }
+
+}
