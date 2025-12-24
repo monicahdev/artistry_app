@@ -1,0 +1,40 @@
+@layer components {
+  .card {
+    @apply bg-surface rounded-2xl overflow-hidden
+           ring-1 ring-ink/10 shadow-sm
+           flex flex-col mt-8;
+  }
+
+  .card__image {
+    @apply w-full h-48 sm:h-56 overflow-hidden;
+  }
+
+  .card__img {
+    @apply w-full h-full object-cover object-center;
+  }
+
+  .card__content {
+    @apply p-4 sm:p-5 flex-1;
+  }
+
+  .card__description {
+    @apply mt-2 font-body text-sm text-muted leading-relaxed;
+  }
+
+  .card__meta {
+    @apply mt-3 font-body text-sm text-ink/90;
+  }
+
+  .card__price {
+    @apply font-semibold text-ink;
+  }
+
+  .card__duration {
+    @apply font-semibold text-ink;
+  }
+
+  .card__cta {
+    @apply m-4 sm:m-5 mt-0;
+  }
+
+}
