@@ -1,0 +1,48 @@
+@layer components {
+  .table-wrapper {
+    @apply w-full overflow-x-auto
+           bg-surface rounded-2xl
+           ring-1 ring-ink/10 shadow-sm;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    @apply w-full text-left;
+    min-width: 560px;
+  }
+
+  .table__head th {
+    @apply px-3 py-2
+           font-body text-[11px] font-semibold uppercase tracking-wider
+           text-ink/80 bg-surface
+           whitespace-nowrap;
+  }
+
+  .table__row {
+    @apply border-t border-ink/10;
+  }
+
+  .table__cell {
+    @apply px-3 py-2
+           align-top font-body text-xs text-ink;
+  }
+
+  .table__actions {
+    @apply flex flex-col gap-2 sm:flex-row sm:items-center;
+  }
+
+  @media (min-width: 768px) {
+    .table {
+      min-width: 0; 
+    }
+
+    .table__head th {
+      @apply px-4 py-3 text-xs;
+    }
+
+    .table__cell {
+      @apply px-4 py-3 text-sm;
+    }
+  }
+}
