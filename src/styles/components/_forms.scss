@@ -1,0 +1,41 @@
+@layer components {
+  .form {
+    @apply w-full;
+  }
+
+  .form__group {
+    @apply mb-4;
+  }
+
+  .form__label {
+    @apply block mb-2 font-body text-sm font-semibold text-ink;
+  }
+
+  .form__input,
+  .form__select {
+    @apply w-full bg-surface rounded-2xl
+           ring-1 ring-ink/10
+           px-4 py-3
+           font-body text-ink
+           placeholder:text-muted
+           transition
+           focus:outline-none focus:ring-2 focus:ring-accent/60;
+  }
+
+  .form__input--textarea {
+    @apply min-h-[120px] resize-y;
+  }
+
+  .form__error {
+    @apply mt-2 inline-flex items-start gap-2
+           rounded-xl px-3 py-2
+           font-body text-xs sm:text-sm text-accent;
+           
+  }
+
+  @media (min-width: 768px) {
+    .form {
+      @apply max-w-md mx-auto;
+    }
+  }
+}
