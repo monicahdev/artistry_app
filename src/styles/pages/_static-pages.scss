@@ -1,0 +1,82 @@
+@layer components {
+
+  /* Static pages */
+  .about,
+  .portfolio  {
+    @apply w-full;
+  }
+
+  .about__title,
+  .portfolio__title {
+    @apply mb-6;
+  }
+
+  /* About Me */
+  .about__image {
+    @apply w-full rounded-2xl overflow-hidden
+           ring-1 ring-ink/10 shadow-sm
+           mb-6 object-cover 
+           h-[52svh];
+  }
+
+  .about__content {
+    @apply bg-surface rounded-2xl
+           ring-1 ring-ink/10 shadow-sm
+           p-5 sm:p-6
+           space-y-4;
+  }
+
+  .about__text {
+    @apply font-body text-ink;
+  }
+
+  /* Portfolio */
+  .portfolio__intro {
+    @apply bg-surface rounded-2xl
+           ring-1 ring-ink/10 shadow-sm
+           p-5 sm:p-6
+           space-y-4
+           mb-6;
+  }
+
+  .portfolio__gallery {
+    @apply flex flex-col gap-4;
+  }
+
+  .portfolio__image {
+    @apply w-full rounded-2xl overflow-hidden
+           ring-1 ring-ink/10 shadow-sm
+           object-cover object-center
+           max-w-fit mx-auto
+  }
+
+   @media (min-width: 768px) {
+
+    /* About Me */
+    .about {
+      @apply grid grid-cols-2 gap-8 items-start;
+    }
+
+    .about__title {
+      @apply col-span-2 mb-2;
+    }
+
+    .about__image {
+      @apply h-[520px] mb-0;
+    }
+
+    .about__content {
+      @apply p-7;
+    }
+
+    /* Portfolio */
+    .portfolio__intro {
+      @apply max-w-3xl mx-auto; 
+    }
+
+    .portfolio__gallery {
+      @apply max-w-2xl mx-auto gap-6 object-contain;
+    }
+
+  }
+}
