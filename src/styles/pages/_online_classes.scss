@@ -1,0 +1,87 @@
+
+@layer components {
+  /* Online classes  */
+  .online-classes__title {
+    @apply mb-6;
+  }
+
+  .online-classes__loading,
+  .online-classes__empty {
+    @apply font-body text-center text-muted py-6;
+  }
+
+  .online-classes__grid {
+    @apply grid grid-cols-1 gap-4;
+  }
+
+  @media (min-width: 768px) {
+    .online-classes__grid {
+      @apply grid-cols-2 gap-5;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .online-classes__grid {
+      @apply grid-cols-3 gap-6;
+    }
+  }
+
+  /* Onlince class detail */
+  .online-class-detail__title {
+    @apply mb-4 m-5;
+  }
+
+  .online-class-detail__description {
+    @apply font-body text-sm sm:text-base text-muted leading-relaxed
+           bg-surface rounded-2xl  ring-ink/10 shadow-sm
+           p-5 sm:p-6 mb-10 mt-10;
+  }
+
+  .online-class-detail__body {
+    @apply w-full;
+  }
+
+  
+  .online-class-detail__loading {
+    @apply font-body text-center text-muted py-6;
+  }
+
+  /* Admin classes list */
+  .admin-classes__header {
+    @apply flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4;
+  }
+
+  .admin-classes__title {
+    @apply mb-0;
+  }
+
+  .admin-classes__new {
+    @apply w-full sm:w-auto;
+  }
+
+  .admin-classes__loading {
+    @apply font-body text-center text-muted py-6;
+  }
+
+  .admin-classes__table {
+    @apply mt-2;
+  }
+
+  /* Grant access cell */
+  .admin-classes__grant {
+    @apply flex flex-col gap-2 sm:flex-row sm:items-center;
+  }
+
+  .admin-classes__grant-input {
+    @apply w-full sm:w-28;
+  }
+
+  .admin-classes__grant-btn {
+    @apply w-full sm:w-auto;
+  }
+
+  .admin-classes__actions {
+    @apply w-full;
+  }
+
+}
