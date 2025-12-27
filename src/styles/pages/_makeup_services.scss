@@ -1,0 +1,100 @@
+@layer components {
+  /* Makeup services list */
+  .makeup-services__title {
+    @apply mb-6;
+  }
+
+  .makeup-services__search {
+    @apply mb-5;
+  }
+
+  .makeup-services__search-input {
+    @apply w-full bg-surface rounded-2xl
+           ring-1 ring-ink/10
+           px-4 py-3
+           font-body text-ink
+           placeholder:text-muted
+           focus:ring-accent/60;
+  }
+
+  .makeup-services__loading,
+  .makeup-services__empty {
+    @apply font-body text-center text-muted py-6;
+  }
+
+  .makeup-services__grid {
+    @apply grid grid-cols-1 gap-4;
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    .makeup-services__grid {
+      @apply grid-cols-2 gap-5;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .makeup-services__grid {
+      @apply grid-cols-3 gap-6;
+    }
+  }
+
+  /* Makeup services detail */
+  .makeup-service-detail__back {
+    @apply mb-4;
+  }
+
+  .makeup-service-detail__layout {
+    @apply flex flex-col gap-5;
+  }
+
+  .makeup-service-detail__content {
+    @apply bg-surface rounded-2xl ring-1 ring-ink/10 shadow-sm
+           p-5 sm:p-6;
+  }
+
+  .makeup-service-detail__title {
+    @apply mb-4;
+  }
+
+  .makeup-service-detail__meta {
+    @apply font-body text-sm text-ink/90 mb-2;
+  }
+
+  .makeup-service-detail__price,
+  .makeup-service-detail__duration {
+    @apply font-semibold text-ink;
+  }
+
+  .makeup-service-detail__description {
+    @apply mt-4 font-body text-sm sm:text-base text-muted leading-relaxed;
+  }
+
+  .makeup-service-detail__cta {
+    @apply mt-5 w-auto  bg-bg;
+  }
+
+  .makeup-service-detail__media {
+    @apply bg-surface rounded-2xl ring-1 ring-ink/10 shadow-sm overflow-hidden;
+  }
+
+  .makeup-service-detail__image {
+    @apply w-full h-[52svh] sm:h-[520px] object-cover object-center;
+  }
+
+  .makeup-service-detail__loading {
+    @apply font-body text-center text-muted py-6;
+  }
+
+  /* Tablet/Desktop */
+  @media (min-width: 768px) {
+    .makeup-service-detail__layout {
+      @apply grid grid-cols-2 gap-8 items-start;
+    }
+
+    .makeup-service-detail__cta {
+      @apply w-auto bg-bg;
+    }
+  }
+}
