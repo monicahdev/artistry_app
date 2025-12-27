@@ -1,0 +1,126 @@
+ @layer components { 
+
+  /* Classes */
+  .admin-classes__header {
+    @apply flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4;
+  }
+
+  .admin-classes__title {
+    @apply mb-0;
+  }
+
+  .admin-classes__new {
+    @apply w-full sm:w-auto;
+  }
+
+  .admin-classes__loading {
+    @apply font-body text-center text-muted py-6;
+  }
+
+  .admin-classes__table {
+    @apply mt-2;
+  }
+
+  /* Grant access cell */
+  .admin-classes__grant {
+    @apply flex flex-col gap-2 sm:flex-row sm:items-center;
+  }
+
+  .admin-classes__grant-input {
+    @apply w-full sm:w-28;
+  }
+
+  .admin-classes__grant-btn {
+    @apply w-full sm:w-auto;
+  }
+
+  .admin-classes__actions {
+    @apply w-full;
+  }
+
+  /* Admin */
+  .admin-class-form__title {
+    @apply mb-6;
+  }
+
+  .admin-class-form__form {
+    @apply bg-surface rounded-2xl ring-1 ring-ink/10 shadow-sm
+           p-5 sm:p-6;
+  }
+
+  .admin-class-form__actions {
+    @apply mt-4 flex flex-col gap-2 sm:flex-row;
+  }
+
+  .admin-class-form__submit,
+  .admin-class-form__cancel {
+    @apply w-full sm:w-auto;
+  }
+}
+
+@layer components {
+  /* Admin services list */
+  .admin-services__header {
+    @apply flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4;
+  }
+
+  .admin-services__title {
+    @apply mb-0;
+  }
+
+  .admin-services__new {
+    @apply w-full sm:w-auto;
+  }
+
+  .admin-services__loading {
+    @apply font-body text-center text-muted py-6;
+  }
+
+  .admin-services__table {
+    @apply mt-2;
+  }
+
+  .admin-services__actions {
+    @apply w-full;
+  }
+
+  /* Admin services form */
+  .admin-service-form__title {
+    @apply mb-6;
+  }
+
+  .admin-service-form__form {
+    @apply bg-surface rounded-2xl ring-1 ring-ink/10 shadow-sm
+           p-5 sm:p-6;
+  }
+
+  .admin-service-form__submit {
+    @apply mt-4 w-full sm:w-auto;
+  }
+
+  /* Users list */
+  .admin-users__title {
+    @apply mb-6;
+  }
+
+  .admin-users__loading {
+    @apply font-body text-center text-muted py-6;
+  }
+
+  .admin-users__list {
+    @apply flex flex-col gap-3;
+  }
+
+  .admin-users__item {
+    @apply bg-surface rounded-2xl ring-1 ring-ink/10 shadow-sm
+           p-4 sm:p-5;
+  }
+
+  .admin-users__user {
+    @apply font-body text-sm sm:text-base text-ink;
+  }
+
+  .admin-users__role {
+    @apply block mt-1 font-body text-xs sm:text-sm text-muted;
+  }
+}
