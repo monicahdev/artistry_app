@@ -1,0 +1,32 @@
+@layer components {
+  /* Bookings form */
+  .booking-form__title {
+    @apply mb-6;
+  }
+
+  .booking-form__form {
+    @apply bg-surface rounded-2xl ring-1 ring-ink/10 shadow-sm
+           p-5 sm:p-6;
+  }
+
+  .booking-form__submit {
+    @apply mt-4 w-full sm:w-auto;
+  }
+
+  /* Bookings list */
+  .bookings__title {
+    @apply mb-6;
+  }
+
+  .bookings__loading {
+    @apply font-body text-center text-muted py-6;
+  }
+
+  .bookings__table {
+    @apply mt-2;
+  }
+
+  .bookings__actions {
+    @apply w-full;
+  }
+}
