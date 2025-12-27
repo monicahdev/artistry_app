@@ -1,0 +1,118 @@
+@layer components {
+
+  .header {
+    @apply sticky top-0 z-50 w-full;
+  }
+
+ .header__brand {
+    @apply relative bg-ink px-4 py-3 sm:px-6 lg:px-8;
+  }
+
+  .header__title {
+    @apply font-display text-5xl font-semibold text-accent leading-tight m-5;
+  }
+
+  .header__subtitle {
+    @apply font-body text-2xl font-semibold uppercase tracking-[0.2em]
+           text-surface/95;
+  }
+
+  /* Nav bar */
+  .header__nav {
+    @apply bg-bg/85 border-b border-muted;
+  }
+
+  .nav__list {
+    @apply flex flex-col gap-2;
+  }
+
+  .nav__item {
+    @apply list-none;
+  }
+
+  .nav__link {
+    @apply inline-flex w-full items-center justify-start rounded-xl
+           px-3 py-2
+           font-body text-sm font-semibold text-ink
+           transition hover:bg-ink/5;
+  }
+
+  .nav__link--active {
+    @apply bg-accent/50;
+  }
+
+    /* Duplicated Nav bar menu in mobile*/
+  .header__list {
+    display: none;
+  }
+
+  /* Nav bar  */
+  @media (min-width: 768px) {
+    .header__list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      @apply px-4 py-2 sm:px-6 lg:px-8;
+    }
+
+    .header__list .nav__link {
+      @apply w-auto justify-center;
+    }
+  }
+
+  /* Burger menu - only mobile */
+  .header__menu-btn {
+    @apply md:hidden min-w-full my-3 p-3 font-body text-4xl font-bold text-accent;
+  }
+
+  /* Mobile panel hidden by default */
+  .header__menu {
+    display: none;
+    @apply md:hidden mt-2 rounded-2xl bg-surface p-2
+           shadow-sm ring-1 ring-ink/10;
+  }
+
+  .header__menu--open {
+    display: block;
+  }
+
+  /* Nav mobile */
+  .header__nav {
+    @apply px-4 py-2 sm:px-6 ;
+  }
+
+  /* User info and nav bar elements */
+  .header__user {
+    @apply rounded-xl bg-surface px-3 py-2
+           font-body text-xs sm:text-sm text-muted
+           ring-1 ring-ink/10;
+  }
+
+  .header__user-email {
+    @apply font-semibold text-ink;
+  }
+
+  .header__btn {
+    @apply w-full md:w-auto;
+  }
+
+  /* Home nav links */
+  .page--home .header__nav {
+    @apply bg-transparent border-none;
+  }
+
+  .page--home .nav__link {
+    @apply text-accent;
+  }
+
+  .page--home .nav__link--active {
+    @apply bg-accent/20;
+  }
+
+  .page--home .header__menu-btn {
+    @apply text-accent border-accent/40;
+  }
+}
+
