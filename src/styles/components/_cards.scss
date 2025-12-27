@@ -18,19 +18,19 @@
   }
 
   .card__description {
-    @apply mt-2 font-body text-sm text-muted leading-relaxed;
+    @apply mt-2 font-body text-sm text-muted;
   }
 
   .card__meta {
-    @apply mt-3 font-body text-sm text-ink/90;
+    @apply mt-3 text-sm text-ink;
   }
 
   .card__price {
-    @apply font-semibold text-ink;
+    @apply text-ink;
   }
 
   .card__duration {
-    @apply font-semibold text-ink;
+    @apply text-ink;
   }
 
   .card__cta {
