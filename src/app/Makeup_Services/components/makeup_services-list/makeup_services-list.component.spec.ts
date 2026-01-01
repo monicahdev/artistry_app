@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ServicesListComponent } from './services-list.component';
+import { provideMockStore } from '@ngrx/store/testing';
+import { MakeupServicesListComponent } from './makeup_services-list.component';
 
 describe('ServicesListComponent', () => {
-  let component: ServicesListComponent;
-  let fixture: ComponentFixture<ServicesListComponent>;
+  let component: MakeupServicesListComponent;
+  let fixture: ComponentFixture<MakeupServicesListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ServicesListComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(ServicesListComponent);
+      declarations: [MakeupServicesListComponent],
+      providers: [provideMockStore({ initialState: {} })],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(MakeupServicesListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

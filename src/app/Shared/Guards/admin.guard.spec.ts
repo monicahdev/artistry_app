@@ -1,17 +1,23 @@
 import { TestBed } from '@angular/core/testing';
-import { CanActivateFn } from '@angular/router';
+import { AdminGuard } from './admin.guard';
 
-import { adminGuard } from './admin.guard';
-
-describe('adminGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => adminGuard(...guardParameters));
+describe('AdminGuard (happy path)', () => {
+  let guard: AdminGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [AdminGuard],
+    });
+
+    guard = TestBed.inject(AdminGuard);
   });
 
   it('should be created', () => {
-    expect(executeGuard).toBeTruthy();
+    expect(guard).toBeTruthy();
+  });
+
+  it('should allow access for admin user (happy path)', () => {
+    spyOn(guard as any, 'canActivate').and.returnValue(true);
+    expect(guard.canActivate()).toBeTrue();
   });
 });
