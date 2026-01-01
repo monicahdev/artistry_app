@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 import { AuthGuard } from './auth-guard.guard';
 
 describe('AuthGuard (happy path)', () => {
@@ -6,7 +7,7 @@ describe('AuthGuard (happy path)', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthGuard],
+      providers: [AuthGuard, provideMockStore({ initialState: {} })],
     });
 
     guard = TestBed.inject(AuthGuard);
