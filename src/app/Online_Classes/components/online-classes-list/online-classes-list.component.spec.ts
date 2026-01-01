@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore } from '@ngrx/store/testing';
 import { OnlineClassesListComponent } from './online-classes-list.component';
 
 describe('OnlineClassesListComponent', () => {
@@ -8,10 +8,10 @@ describe('OnlineClassesListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OnlineClassesListComponent]
-    })
-    .compileComponents();
-    
+      declarations: [OnlineClassesListComponent],
+      providers: [provideMockStore({ initialState: {} })],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(OnlineClassesListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

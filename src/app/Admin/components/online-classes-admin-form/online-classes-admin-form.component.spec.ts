@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { OnlineClassesAdminFormComponent } from './online-classes-admin-form.component';
@@ -10,7 +11,7 @@ describe('OnlineClassesAdminFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [OnlineClassesAdminFormComponent],
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, ReactiveFormsModule],
       providers: [provideMockStore({ initialState: {} })],
     }).compileComponents();
 
