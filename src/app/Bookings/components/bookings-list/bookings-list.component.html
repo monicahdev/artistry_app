@@ -26,8 +26,9 @@
           <td class="table__cell">{{ booking.status }}</td>
           <td class="table__cell">{{ booking.comments }}</td>
           <td class="table__cell">
+            
             <div class="table__actions bookings__actions">
-                <button class="btn btn--secondary"(click)="onEditBooking(booking)">
+                <button class="btn btn--accent"(click)="onEditBooking(booking)">
                 EDITAR RESERVA
                 </button>
                 <button class="btn btn--accent" type="button" (click)="onDeleteBooking(booking.id)">

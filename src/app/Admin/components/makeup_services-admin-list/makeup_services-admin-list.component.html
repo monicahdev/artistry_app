@@ -3,7 +3,7 @@
     <div class="admin-services__header">
       <h2 class="admin-services__title heading">Servicios (Admin)</h2>
 
-      <button class="admin-services__new btn btn--accent" type="button" (click)="onNewMakeupService()">
+      <button class="admin-services__new btn btn--secondary" type="button" (click)="onNewMakeupService()">
         CREAR NUEVO SERVICIO
       </button>
     </div>
@@ -34,7 +34,7 @@
             <td class="table__cell">{{ makeup_service.duration }}</td>
             <td>
               <div class="table__actions admin-services__actions">
-                <button class="btn btn--secondary" type="button" (click)="onEditMakeupService(makeup_service)">
+                <button class="btn btn--accent" type="button" (click)="onEditMakeupService(makeup_service)">
                   Editar
                 </button>
                 <button class="btn btn--accent" type="button" (click)="onDeleteMakeupService(makeup_service.id)">

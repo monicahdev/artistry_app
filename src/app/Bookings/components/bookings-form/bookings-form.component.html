@@ -47,10 +47,12 @@
         ></textarea>
       </div>
 
-      <button class="booking-form__submit btn btn--accent" type="submit">
-        {{ isEditMode ? 'GUARDAR CAMBIOS' : 'RESERVAR' }}
-      </button>
-      <button class="booking-form__submit btn btn--secondary" type="button" (click)="onCancel()">CANCELAR</button>
+      <div class="admin-class-form__actions">
+        <button class="booking-form__submit btn btn--accent" type="submit">
+          {{ isEditMode ? 'GUARDAR CAMBIOS' : 'RESERVAR' }}
+        </button>
+        <button class="booking-form__submit btn btn--accent" type="button" (click)="onCancel()">CANCELAR</button>
+      </div>
     </form>
   </section>
 </div>

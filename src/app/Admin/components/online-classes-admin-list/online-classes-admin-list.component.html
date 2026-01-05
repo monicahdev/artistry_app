@@ -2,7 +2,7 @@
   <section class="admin-classes page">
     <div class="admin-classes__header">
       <h2 class="admin-classes__title heading">Clases online (Admin)</h2>
-      <button class="admin-classes__new btn btn--accent" type="button" (click)="onNewClass()">CREAR CLASE</button>
+      <button class="admin-classes__new btn btn--secondary" type="button" (click)="onNewClass()">CREAR CLASE</button>
     </div>
 
     <div class="admin-classes__loading" *ngIf="loading$ | async">Cargando clases...</div>
@@ -31,7 +31,7 @@
             <td class="table__cell">{{ cls.url }}</td>
             <td class="table__cell">
               <div class="table__actions admin-classes__actions">
-                <button class="btn btn--secondary" type="button" (click)="onEditClass(cls)">EDITAR</button>
+                <button class="btn btn--accent" type="button" (click)="onEditClass(cls)">EDITAR</button>
                 <button class="btn btn--accent"type="button" (click)="onDeleteClass(cls.id)">ELIMINAR</button>
               </div>
             </td>
